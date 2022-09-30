@@ -26,7 +26,7 @@ local config = {
   },
 
   -- Set colorscheme to use
-  colorscheme = "default_theme",
+  colorscheme = "PaperColor",
 
   -- Override highlight groups in any theme
   highlights = {
@@ -40,6 +40,7 @@ local config = {
       return highlights
     end,
   },
+
 
   -- set vim options here (vim.<first_key>.<second_key> =  value)
   options = {
@@ -170,8 +171,10 @@ local config = {
       ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
       ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
-      ["<leader>Tt"] = { "<cmd>:call RunCurrentSpecFile()<cr>", desc = "Test File" },
-      ["<leader>Tf"] = { "<cmd>:execute 'e ' . eval('rails#buffer().alternate()')<cr>", desc = "Go to Test File" },
+      ["<leader>zz"] = { "<cmd>:TestFile<cr>", desc = "Test File" },
+      ["<leader>zc"] = { "<cmd>:TestVisit<cr>", desc = "Test Visit" },
+      ["<leader>zx"] = { "<cmd>:execute 'e ' . eval('rails#buffer().alternate()')<cr>", desc = "Go to Test File" },
+      ["<leader>r"] = { "<cmd>:!bundle exec rubocop -A %<cr>", desc = "Run Rubocop Current File" },
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     },
@@ -189,10 +192,16 @@ local config = {
       -- You can also add new plugins here as well:
       -- Add plugins, the packer syntax without the "use"
       -- { "andweeb/presence.nvim" },
-      { "thoughtbot/vim-rspec" },
+      { "vim-test/vim-test" },
       {"github/copilot.vim"},
       {"tpope/vim-rails"},
-      {"tpope/vim-dispatch"}
+      {"tpope/vim-dispatch"},
+      {"catppuccin/nvim", as = "catppuccin"},
+      {"rose-pine/neovim", as = "rose-pine"},
+      {"NLKNguyen/papercolor-theme"},
+      {"sainnhe/everforest"},
+      {"Shatur/neovim-ayu"},
+      {"morhetz/gruvbox"}
       -- {
       --   "ray-x/lsp_signature.nvim",
       --   event = "BufRead",
@@ -286,7 +295,8 @@ local config = {
           -- third key is the key to bring up next level and its displayed
           -- group name in which-key top level menu
           ["b"] = { name = "Buffer" },
-          ['T'] = { name = "Test" },
+          ['z'] = { name = "Test" },
+          ['r'] = { name = "Rubocop" },
         },
       },
     },

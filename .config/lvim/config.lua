@@ -19,8 +19,8 @@ lvim.colorscheme = "lunar"
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
--- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
--- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
@@ -51,8 +51,15 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["t"] = {
-  name = "+Tests",
-  r = { "<cmd>:TestFile <cr>", "RSpec current spec" },
+  name = "+Test",
+  f = { "<cmd>:TestFile<cr>", "Test File" },
+  v = { "<cmd>:TestVisit<cr>", "Test Visit" },
+}
+
+lvim.builtin.which_key.mappings["r"] = {
+  name = "+Ruby",
+  t = { "<cmd>:execute 'e ' . eval('rails#buffer().alternate()')<cr>", "Go to test file" },
+  r = { "<cmd>:!bundle exec rubocop -A %<cr>", "LocationList" },
 }
 
 -- TODO: User Config for predefined plugins
@@ -70,11 +77,11 @@ lvim.builtin.treesitter.ensure_installed = {
   "javascript",
   "json",
   "lua",
+  "ruby",
   "python",
   "typescript",
   "tsx",
   "css",
-  "rust",
   "java",
   "yaml",
 }
@@ -124,80 +131,59 @@ lvim.builtin.treesitter.highlight.enable = true
 -- end
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
--- local formatters = require "lvim.lsp.null-ls.formatters"
--- formatters.setup {
---   { command = "black", filetypes = { "python" } },
---   { command = "isort", filetypes = { "python" } },
---   {
---     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
---     command = "prettier",
---     ---@usage arguments to pass to the formatter
---     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
---     extra_args = { "--print-with", "100" },
---     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
---     filetypes = { "typescript", "typescriptreact" },
---   },
--- }
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  { command = "rubocop" }
+}
 
 -- -- set additional linters
--- local linters = require "lvim.lsp.null-ls.linters"
--- linters.setup {
---   { command = "flake8", filetypes = { "python" } },
---   {
---     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
---     command = "shellcheck",
---     ---@usage arguments to pass to the formatter
---     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
---     extra_args = { "--severity", "warning" },
---   },
---   {
---     command = "codespell",
---     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
---     filetypes = { "javascript", "python" },
---   },
--- }
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  { command = "rubocop" }
+}
 
 -- Additional Plugins
 lvim.plugins = {
   {
-    "npxbr/glow.nvim",
-    ft = { "markdown" }
-    -- run = "yay -S glow"
-  },
-  { "zbirenbaum/copilot.lua",
-    event = { "VimEnter" },
-    config = function()
-      vim.defer_fn(function()
-        require("copilot").setup {
-          plugin_manager_path = get_runtime_dir() .. "/site/pack/packer",
-        }
-      end, 100)
-    end,
-  },
-  { "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua", "nvim-cmp" },
-  },
-  { "vim-test/vim-test"},
-  {
-    "tpope/vim-rails",
-    cmd = {
-      "Eview",
-      "Econtroller",
-      "Emodel",
-      "Smodel",
-      "Sview",
-      "Scontroller",
-      "Vmodel",
-      "Vview",
-      "Vcontroller",
-      "Tmodel",
-      "Tview",
-      "Tcontroller",
-      "Rails",
-      "Generate",
-      "Runner",
-      "Extract"
-    }
+    { "zbirenbaum/copilot.lua",
+      event = { "VimEnter" },
+      config = function()
+        vim.defer_fn(function()
+          require("copilot").setup {
+            plugin_manager_path = get_runtime_dir() .. "/site/pack/packer",
+            suggestion = {
+              auto_trigger = true
+            }
+          }
+        end, 100)
+      end,
+    },
+    { "zbirenbaum/copilot-cmp",
+      after = { "copilot.lua", "nvim-cmp" },
+    },
+    { "vim-test/vim-test" },
+    { "tpope/vim-dispatch" },
+    {
+      "tpope/vim-rails",
+      cmd = {
+        "Eview",
+        "Econtroller",
+        "Emodel",
+        "Smodel",
+        "Sview",
+        "Scontroller",
+        "Vmodel",
+        "Vview",
+        "Vcontroller",
+        "Tmodel",
+        "Tview",
+        "Tcontroller",
+        "Rails",
+        "Generate",
+        "Runner",
+        "Extract"
+      }
+    },
   },
 }
 
@@ -214,3 +200,8 @@ lvim.plugins = {
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
+--
+--
+lvim.builtin.cmp.formatting.source_names["copilot"] = "(Copilot)"
+table.insert(lvim.builtin.cmp.sources, 1, { name = "copilot" })
+vim.b.copilot_suggestion_hidden = false

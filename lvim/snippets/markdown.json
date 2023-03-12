@@ -1,7 +1,7 @@
 {
-  "ruby-code-block": {
+  "ruby-block": {
     "prefix": "ruby-block",
     "body": ["```ruby", "$1", "```"],
-    "description": "insert a ruby code block"
+    "description": "insert a ruby block"
   }
 }

@@ -1,84 +1,45 @@
 --[[
- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
- `lvim` is the global options object
+
 ]]
 -- vim options
 vim.opt.clipboard = "unnamedplus"          -- allows neovim to access the system clipboard
-vim.g.markdown_recommended_style = 0
-vim.opt.cmdheight = 2                      -- more space in the neovim command line for displaying messages
-vim.opt.colorcolumn = "99999"              -- fixes indentline for now
-vim.opt.completeopt = { "menuone", "noselect" }
-vim.opt.conceallevel = 0                   -- so that `` is visible in markdown files
-vim.opt.fileencoding = "utf-8"             -- the encoding written to a file
-vim.opt.foldmethod = "manual"              -- folding set to "expr" for treesitter based folding
-vim.opt.foldexpr = ""                      -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
-vim.opt.guifont = "monospace:h17"          -- the font used in graphical neovim applications
-vim.opt.hidden = true                      -- required to keep multiple buffers and open multiple buffers
-vim.opt.hlsearch = true                    -- highlight all matches on previous search pattern
-vim.opt.ignorecase = true                  -- ignore case in search patterns
-vim.opt.mouse = "a"                        -- allow the mouse to be used in neovim
-vim.opt.pumheight = 10                     -- pop up menu height
-vim.opt.showmode = false                   -- we don't need to see things like -- INSERT -- anymore
-vim.opt.showtabline = 2                    -- always show tabs
-vim.opt.smartcase = true                   -- smart case
-vim.opt.smartindent = true                 -- make indenting smarter again
-vim.opt.splitbelow = true                  -- force all horizontal splits to go below current window
-vim.opt.splitright = true                  -- force all vertical splits to go to the right of current window
-vim.opt.swapfile = false                   -- creates a swapfile
-vim.opt.termguicolors = true               -- set term gui colors (most terminals support this)
-vim.opt.timeoutlen = 100                   -- time to wait for a mapped sequence to complete (in milliseconds)
-vim.opt.title = true                       -- set the title of window to the value of the titlestring
-vim.opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
-vim.opt.undodir = vim.fn.stdpath "cache" .. "/undo"
-vim.opt.undofile = true                    -- enable persistent undo
-vim.opt.updatetime = 300                   -- faster completion
-vim.opt.writebackup = false                -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
-vim.opt.expandtab = true                   -- convert tabs to spaces
-vim.opt.shiftwidth = 2                     -- the number of spaces inserted for each indentation
-vim.opt.tabstop = 2                        -- insert 2 spaces for a tab
-vim.opt.cursorline = true                  -- highlight the current line
-vim.opt.number = true                      -- set numbered lines
-vim.opt.relativenumber = false             -- set relative numbered lines
-vim.opt.numberwidth = 4                    -- set number column width to 2 {default 4}
-vim.opt.signcolumn = "yes"                 -- always show the sign column otherwise it would shift the text each time
-vim.opt.wrap = false                       -- display lines as one long line
-vim.opt.spell = false
-vim.opt.spelllang = "pt"
-vim.opt.scrolloff = 8 -- is one of my fav
-vim.opt.sidescrolloff = 8
+vim.opt.cursorline = false
 
 -- general
 lvim.log.level = "info"
-lvim.format_on_save = {
-  enabled = true,
-  timeout = 1000,
-}
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
 -- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 lvim.leader = "space"
+lvim.transparent_window = true
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+lvim.builtin.which_key.mappings["l"]["f"] = {
+  function()
+    require("lvim.lsp.utils").format { timeout_ms = 3000 }
+  end,
+  "Format",
+}
 
 -- -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 
 -- -- Change theme settings
--- lvim.colorscheme = "lunar"
 
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 
 -- Automatically install missing parsers when entering buffer
 lvim.builtin.treesitter.auto_install = true
+
 
 -- lvim.builtin.treesitter.ignore_install = { "haskell" }
 
@@ -181,23 +142,31 @@ lvim.plugins = {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
   },
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine'
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+  },
   { "vim-test/vim-test" },
   { "tpope/vim-dispatch" },
   {
     "jubnzv/mdeval.nvim",
     config = function()
       vim.defer_fn(function()
-        require("mdeval").setup {
-          require_confirmation = false,
-          eval_options = {
-            -- Set custom configuration for C++
-            ruby = {
-              default_header = [[
-      require 'rspec/autorun'
-      ]]
-            }
+      require("mdeval").setup {
+        require_confirmation = false,
+        eval_options = {
+          -- Set custom configuration for C++
+          ruby = {
+            default_header = [[
+    require 'rspec/autorun'
+    ]]
           }
         }
+      }
       end, 100)
     end
   },
@@ -211,7 +180,12 @@ lvim.plugins = {
     end,
   },
   {
+    "jose-elias-alvarez/null-ls.nvim", 
+    lazy = false
+  },
+  {
     "tpope/vim-rails",
+    lazy = false,
     cmd = {
       "Eview",
       "Econtroller",
@@ -237,6 +211,7 @@ lvim.plugins = {
     config = function()
       vim.defer_fn(function()
         require("copilot").setup {
+          copilot_node_command ='/home/felipe/.asdf/installs/nodejs/lts/bin/node',
           plugin_manager_path = get_runtime_dir() .. "/site/pack/packer",
           panel = {
             enabled = true,
@@ -255,8 +230,16 @@ lvim.plugins = {
   {
     "vim-test/vim-test",
     config = function()
-      vim.g["test#strategy"] = "neovim"
+      vim.g["test#strategy"] = "vimux"
+      vim.g["test#preserve_screen"] = 1
       vim.g["test#ruby#rspec#executable"] = "bundle exec rspec"
+    end
+  },
+  {
+    "preservim/vimux",
+    config = function()
+      vim.g.VimuxHeight = 30
+      vim.g.VimuxOrientation = 'h'
     end
   },
   {
@@ -318,6 +301,30 @@ lvim.builtin.which_key.mappings["r"] = {
   r = { "<cmd>:!bundle exec rubocop -A %<cr>", "Rubocop" },
   s = { "<cmd>:RorSchemaListColumns<cr>", "Schema List" },
 }
+
+require("catppuccin").setup {
+  flavour = "mocha",
+  transparent_background = true,
+  color_overrides = {
+      all = {
+          text = "#CDD6F4",
+      },
+      mocha = {
+        surface0 = "#F9E2AF", -- background
+        surface1 = "#ffca59", -- numbers
+        surface2 = "#ACB0BE",
+        overlay0 = "#8c8fa1" -- comments
+        
+    },
+  },
+  dim_inactive = {
+      enable = false,
+      shade = "dark",
+      percentage = 0.5
+  },
+}
+lvim.colorscheme = "catppuccin-mocha"
+
 
 -- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
 -- vim.api.nvim_create_autocmd("FileType", {

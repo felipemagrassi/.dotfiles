@@ -1,7 +1,0 @@
-{
-  "ruby-block": {
-    "prefix": "ruby-block",
-    "body": ["```ruby", "$1", "```"],
-    "description": "insert a ruby block"
-  }
-}

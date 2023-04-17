@@ -117,5 +117,14 @@ return require('packer').startup(function(use)
     use("preservim/vimux")
     use("theprimeagen/refactoring.nvim")
     use("xiyaowong/transparent.nvim")
+    use({
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        tag = "v<CurrentMajor>.*",
+        -- install jsregexp (optional!:).
+        run = "make install_jsregexp"
+    })
+    use("saadparwaiz1/cmp_luasnip")
+    use("rafamadriz/friendly-snippets")
     use("tpope/vim-rhubarb")
 end)

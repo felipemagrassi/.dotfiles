@@ -17,5 +17,7 @@ source $ZSH/oh-my-zsh.sh
 alias rebase='git fetch origin master:master; git rebase master'
 alias vim='nvim'
 alias lvim='nvim'
+alias bat='batcat'
 
 eval "$(starship init zsh)"
+

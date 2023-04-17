@@ -6,7 +6,6 @@ vim.keymap.set('n', "<leader>tf", ":lua require('neotest').run.run(vim.fn.expand
 
 local tmux_shell  = vim.fn.exists('$TMUX')
 
-print(tmux_shell)
 
 if tmux_shell == 1 then
     vim.g["test#strategy"] = "vimux"
@@ -16,9 +15,8 @@ else
     vim.g["test#strategy"] = "dispatch"
 end
 
-vim.g["test#ruby#minitest#executable"] = "ruby"
-
 vim.g["test#preserve_screen"] = 0
+vim.g["test#ruby#minitest#executable"] = "ruby"
 
 local test = vim.api.nvim_create_augroup("test", { clear = true })
 local condition = vim.api.nvim_call_function("test#exists", {})

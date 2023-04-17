@@ -70,7 +70,6 @@ return require('packer').startup(function(use)
     }
     use("tpope/vim-dispatch")
     use("tpope/vim-projectionist")
-    use("tpope/vim-rails")
     use("vim-test/vim-test")
     use {
         "folke/trouble.nvim",
@@ -118,4 +117,5 @@ return require('packer').startup(function(use)
     use("preservim/vimux")
     use("theprimeagen/refactoring.nvim")
     use("xiyaowong/transparent.nvim")
+    use("tpope/vim-rhubarb")
 end)

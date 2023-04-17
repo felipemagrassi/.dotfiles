@@ -69,6 +69,7 @@
                 "backgroundImage": null,
                 "backgroundImageOpacity": 0.3,
                 "colorScheme": "Catppuccin Mocha",
+                "cursorShape": "filledBox",
                 "font": 
                 {
                     "face": "Hack Nerd Font Mono",
@@ -78,12 +79,8 @@
                 "hidden": true,
                 "intenseTextStyle": "all",
                 "name": "Ubuntu",
-                "opacity": 50,
+                "opacity": 70,
                 "source": "Windows.Terminal.Wsl",
-                "unfocusedAppearance": 
-                {
-                    "colorScheme": "Vintage"
-                },
                 "useAcrylic": true
             },
             {

@@ -29,11 +29,18 @@
             "keys": "alt+shift+d"
         }
     ],
+    "alwaysShowNotificationIcon": true,
     "copyFormatting": "none",
-    "copyOnSelect": false,
+    "copyOnSelect": true,
     "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
     "initialCols": 125,
     "initialRows": 45,
+    "newTabMenu": 
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
     "profiles": 
     {
         "defaults": {},
@@ -58,9 +65,10 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
-                "backgroundImage": "C:\\Users\\felip\\Downloads\\4R47qJV.jpeg",
-                "backgroundImageOpacity": 0.2,
-                "colorScheme": "LiquidCarbonTransparentInverse",
+                "adjustIndistinguishableColors": "always",
+                "backgroundImage": null,
+                "backgroundImageOpacity": 0.3,
+                "colorScheme": "Catppuccin Mocha",
                 "font": 
                 {
                     "face": "Hack Nerd Font Mono",
@@ -68,9 +76,14 @@
                 },
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
                 "hidden": true,
+                "intenseTextStyle": "all",
                 "name": "Ubuntu",
-                "opacity": 15,
+                "opacity": 50,
                 "source": "Windows.Terminal.Wsl",
+                "unfocusedAppearance": 
+                {
+                    "colorScheme": "Vintage"
+                },
                 "useAcrylic": true
             },
             {
@@ -84,6 +97,29 @@
     },
     "schemes": 
     [
+        {
+            "background": "#40318D",
+            "black": "#090300",
+            "blue": "#40318D",
+            "brightBlack": "#000000",
+            "brightBlue": "#40318D",
+            "brightCyan": "#67B6BD",
+            "brightGreen": "#55A049",
+            "brightPurple": "#8B3F96",
+            "brightRed": "#883932",
+            "brightWhite": "#F7F7F7",
+            "brightYellow": "#BFCE72",
+            "cursorColor": "#7869C4",
+            "cyan": "#67B6BD",
+            "foreground": "#7869C4",
+            "green": "#55A049",
+            "name": "C64",
+            "purple": "#8B3F96",
+            "red": "#883932",
+            "selectionBackground": "#7869C4",
+            "white": "#FFFFFF",
+            "yellow": "#BFCE72"
+        },
         {
             "background": "#0C0C0C",
             "black": "#0C0C0C",
@@ -129,6 +165,52 @@
             "selectionBackground": "#FFFFFF",
             "white": "#CCCCCC",
             "yellow": "#C19C00"
+        },
+        {
+            "background": "#1E1E2E",
+            "black": "#45475A",
+            "blue": "#89B4FA",
+            "brightBlack": "#585B70",
+            "brightBlue": "#89B4FA",
+            "brightCyan": "#94E2D5",
+            "brightGreen": "#A6E3A1",
+            "brightPurple": "#F5C2E7",
+            "brightRed": "#F38BA8",
+            "brightWhite": "#A6ADC8",
+            "brightYellow": "#F9E2AF",
+            "cursorColor": "#F5E0DC",
+            "cyan": "#94E2D5",
+            "foreground": "#CDD6F4",
+            "green": "#A6E3A1",
+            "name": "Catppuccin Mocha",
+            "purple": "#F5C2E7",
+            "red": "#F38BA8",
+            "selectionBackground": "#585B70",
+            "white": "#BAC2DE",
+            "yellow": "#F9E2AF"
+        },
+        {
+            "background": "#272822",
+            "black": "#000000",
+            "blue": "#268BD2",
+            "brightBlack": "#002B36",
+            "brightBlue": "#AE81FF",
+            "brightCyan": "#A6E22E",
+            "brightGreen": "#80FF80",
+            "brightPurple": "#6C71C4",
+            "brightRed": "#DE8E30",
+            "brightWhite": "#FDF6E3",
+            "brightYellow": "#66D9EF",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#A6E22E",
+            "foreground": "#FFFFFF",
+            "green": "#A6E22E",
+            "name": "CharmQuark",
+            "purple": "#AE81FF",
+            "red": "#F92672",
+            "selectionBackground": "#FFFFFF",
+            "white": "#C0C0C0",
+            "yellow": "#66D9EF"
         },
         {
             "background": "#200101",
@@ -384,6 +466,29 @@
             "yellow": "#808000"
         },
         {
+            "background": "#332A57",
+            "black": "#000000",
+            "blue": "#00BFFF",
+            "brightBlack": "#000000",
+            "brightBlue": "#1BCCFD",
+            "brightCyan": "#99D6FC",
+            "brightGreen": "#21F6BC",
+            "brightPurple": "#E6AEFE",
+            "brightRed": "#FF8AA4",
+            "brightWhite": "#FFFFFF",
+            "brightYellow": "#FFF787",
+            "cursorColor": "#21F6BC",
+            "cyan": "#86CBFE",
+            "foreground": "#E5E5E5",
+            "green": "#00FBAC",
+            "name": "cyberpunk",
+            "purple": "#DF95FF",
+            "red": "#FF7092",
+            "selectionBackground": "#C1DEFF",
+            "white": "#FFFFFF",
+            "yellow": "#FFFA6A"
+        },
+        {
             "background": "#262B33",
             "black": "#3B3750",
             "blue": "#576EA6",
@@ -408,5 +513,48 @@
         }
     ],
     "startOnUserLogin": true,
-    "themes": []
+    "tabWidthMode": "equal",
+    "theme": "dark",
+    "themes": 
+    [
+        {
+            "name": "Grace Kelly",
+            "tab": 
+            {
+                "background": "#000000FF",
+                "showCloseButton": "always",
+                "unfocusedBackground": "#63149BFF"
+            },
+            "tabRow": 
+            {
+                "background": "#061612FF",
+                "unfocusedBackground": "#061612FF"
+            },
+            "window": 
+            {
+                "applicationTheme": "dark",
+                "useMica": true
+            }
+        },
+        {
+            "name": "My Mica Theme",
+            "tab": 
+            {
+                "background": "terminalBackground",
+                "showCloseButton": "always",
+                "unfocusedBackground": null
+            },
+            "tabRow": 
+            {
+                "background": "#00000000",
+                "unfocusedBackground": null
+            },
+            "window": 
+            {
+                "applicationTheme": "system",
+                "useMica": true
+            }
+        }
+    ],
+    "useAcrylicInTabRow": true
 }

@@ -10,7 +10,6 @@ export PATH=/home/felipe/.local/bin:$PATH
 export EDITOR='vim'
 
 ZSH_THEME="junkfood"
-DISABLE_LS_COLORS="true"
 plugins=(git rails asdf keychain zsh-autosuggestions zsh-syntax-highlighting git-auto-fetch)
 
 source $ZSH/oh-my-zsh.sh

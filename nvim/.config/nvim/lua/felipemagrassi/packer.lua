@@ -51,25 +51,8 @@ return require('packer').startup(function(use)
     }
 
     use("github/copilot.vim")
-    use {
-        "nvim-neotest/neotest",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-            "antoinemadec/FixCursorHold.nvim",
-            "olimorris/neotest-rspec",
-            "nvim-neotest/neotest-vim-test"
-        },
-        config = function()
-            require('neotest').setup({
-                adapters = {
-                    require('neotest-rspec')
-                }
-            })
-        end
-    }
     use("tpope/vim-dispatch")
-    use("tpope/vim-projectionist")
+    use("tpope/vim-rails")
     use("vim-test/vim-test")
     use {
         "folke/trouble.nvim",
@@ -117,6 +100,8 @@ return require('packer').startup(function(use)
     use("preservim/vimux")
     use("theprimeagen/refactoring.nvim")
     use("xiyaowong/transparent.nvim")
+    use("tpope/vim-rake")
+    use("tpope/vim-projectionist")
     use({
         "L3MON4D3/LuaSnip",
         -- follow latest release.

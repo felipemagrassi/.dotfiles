@@ -19,5 +19,8 @@ alias vim='nvim'
 alias lvim='nvim'
 alias bat='batcat'
 
+/usr/bin/keychain $HOME/.ssh/id_ed25519
+source $HOME/.keychain/"$(hostname)"-sh
+
 eval "$(starship init zsh)"
 

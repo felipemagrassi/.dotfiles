@@ -4,20 +4,20 @@
     "actions": 
     [
         {
-            "command": 
-            {
-                "action": "copy",
-                "singleLine": false
-            },
-            "keys": "ctrl+c"
+            "command": "find",
+            "keys": "ctrl+shift+f"
         },
         {
             "command": "paste",
             "keys": "ctrl+v"
         },
         {
-            "command": "find",
-            "keys": "ctrl+shift+f"
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "keys": "ctrl+c"
         },
         {
             "command": 
@@ -29,18 +29,10 @@
             "keys": "alt+shift+d"
         }
     ],
-    "alwaysShowNotificationIcon": true,
     "copyFormatting": "none",
-    "copyOnSelect": true,
-    "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-    "initialCols": 125,
-    "initialRows": 45,
-    "newTabMenu": 
-    [
-        {
-            "type": "remainingProfiles"
-        }
-    ],
+    "copyOnSelect": false,
+    "defaultProfile": "{f53bebaa-44ec-4f2c-81a9-5928d626ca89}",
+    "firstWindowPreference": "persistedWindowLayout",
     "profiles": 
     {
         "defaults": {},
@@ -59,64 +51,30 @@
                 "name": "Prompt de comando"
             },
             {
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": false,
-                "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure"
-            },
-            {
-                "adjustIndistinguishableColors": "always",
+                "adjustIndistinguishableColors": "indexed",
                 "backgroundImage": null,
-                "backgroundImageOpacity": 0.3,
+                "backgroundImageOpacity": 0.2,
                 "colorScheme": "Catppuccin Mocha",
+                "commandline": "ubuntu.exe",
                 "cursorShape": "filledBox",
                 "font": 
                 {
-                    "face": "Hack Nerd Font Mono",
+                    "face": "JetBrainsMono Nerd Font Mono",
                     "size": 14.0
                 },
-                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-                "hidden": true,
+                "guid": "{f53bebaa-44ec-4f2c-81a9-5928d626ca89}",
+                "hidden": false,
+                "icon": "https://assets.ubuntu.com/v1/49a1a858-favicon-32x32.png",
                 "intenseTextStyle": "all",
                 "name": "Ubuntu",
-                "opacity": 70,
-                "source": "Windows.Terminal.Wsl",
+                "opacity": 100,
+                "tabTitle": "Ubuntu",
                 "useAcrylic": true
-            },
-            {
-                "colorScheme": "Vintage",
-                "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
-                "hidden": false,
-                "name": "Ubuntu",
-                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
             }
         ]
     },
     "schemes": 
     [
-        {
-            "background": "#40318D",
-            "black": "#090300",
-            "blue": "#40318D",
-            "brightBlack": "#000000",
-            "brightBlue": "#40318D",
-            "brightCyan": "#67B6BD",
-            "brightGreen": "#55A049",
-            "brightPurple": "#8B3F96",
-            "brightRed": "#883932",
-            "brightWhite": "#F7F7F7",
-            "brightYellow": "#BFCE72",
-            "cursorColor": "#7869C4",
-            "cyan": "#67B6BD",
-            "foreground": "#7869C4",
-            "green": "#55A049",
-            "name": "C64",
-            "purple": "#8B3F96",
-            "red": "#883932",
-            "selectionBackground": "#7869C4",
-            "white": "#FFFFFF",
-            "yellow": "#BFCE72"
-        },
         {
             "background": "#0C0C0C",
             "black": "#0C0C0C",
@@ -187,29 +145,6 @@
             "yellow": "#F9E2AF"
         },
         {
-            "background": "#272822",
-            "black": "#000000",
-            "blue": "#268BD2",
-            "brightBlack": "#002B36",
-            "brightBlue": "#AE81FF",
-            "brightCyan": "#A6E22E",
-            "brightGreen": "#80FF80",
-            "brightPurple": "#6C71C4",
-            "brightRed": "#DE8E30",
-            "brightWhite": "#FDF6E3",
-            "brightYellow": "#66D9EF",
-            "cursorColor": "#FFFFFF",
-            "cyan": "#A6E22E",
-            "foreground": "#FFFFFF",
-            "green": "#A6E22E",
-            "name": "CharmQuark",
-            "purple": "#AE81FF",
-            "red": "#F92672",
-            "selectionBackground": "#FFFFFF",
-            "white": "#C0C0C0",
-            "yellow": "#66D9EF"
-        },
-        {
             "background": "#200101",
             "black": "#1F0000",
             "blue": "#B00D0D",
@@ -277,6 +212,29 @@
             "selectionBackground": "#7DBEFF",
             "white": "#000000",
             "yellow": "#CCAC00"
+        },
+        {
+            "background": "#0D0D17",
+            "black": "#4D4D4D",
+            "blue": "#3182E0",
+            "brightBlack": "#808080",
+            "brightBlue": "#6096FF",
+            "brightCyan": "#0AE78D",
+            "brightGreen": "#0AE78D",
+            "brightPurple": "#FF78A2",
+            "brightRed": "#F16D86",
+            "brightWhite": "#FFFFFF",
+            "brightYellow": "#FFFC67",
+            "cursorColor": "#E6E5E5",
+            "cyan": "#09C87A",
+            "foreground": "#E6E5E5",
+            "green": "#09CD7E",
+            "name": "Nocturnal Winter",
+            "purple": "#FF2B6D",
+            "red": "#F12D52",
+            "selectionBackground": "#ADBDD0",
+            "white": "#FCFCFC",
+            "yellow": "#F5F17A"
         },
         {
             "background": "#282C34",
@@ -463,95 +421,50 @@
             "yellow": "#808000"
         },
         {
-            "background": "#332A57",
-            "black": "#000000",
-            "blue": "#00BFFF",
-            "brightBlack": "#000000",
-            "brightBlue": "#1BCCFD",
-            "brightCyan": "#99D6FC",
-            "brightGreen": "#21F6BC",
-            "brightPurple": "#E6AEFE",
-            "brightRed": "#FF8AA4",
-            "brightWhite": "#FFFFFF",
-            "brightYellow": "#FFF787",
-            "cursorColor": "#21F6BC",
-            "cyan": "#86CBFE",
-            "foreground": "#E5E5E5",
-            "green": "#00FBAC",
-            "name": "cyberpunk",
-            "purple": "#DF95FF",
-            "red": "#FF7092",
+            "background": "#1E1E1E",
+            "black": "#282A36",
+            "blue": "#8897F4",
+            "brightBlack": "#414458",
+            "brightBlue": "#556FFF",
+            "brightCyan": "#3FDCEE",
+            "brightGreen": "#18E3C8",
+            "brightPurple": "#B043D1",
+            "brightRed": "#FF4971",
+            "brightWhite": "#BEBEC1",
+            "brightYellow": "#FF8037",
+            "cursorColor": "#C574DD",
+            "cyan": "#79E6F3",
+            "foreground": "#FDFDFD",
+            "green": "#5ADECD",
+            "name": "lovelace",
+            "purple": "#C574DD",
+            "red": "#F37F97",
             "selectionBackground": "#C1DEFF",
-            "white": "#FFFFFF",
-            "yellow": "#FFFA6A"
-        },
-        {
-            "background": "#262B33",
-            "black": "#3B3750",
-            "blue": "#576EA6",
-            "brightBlack": "#A874CE",
-            "brightBlue": "#8C9FCD",
-            "brightCyan": "#B7C9EF",
-            "brightGreen": "#BCDD61",
-            "brightPurple": "#E16C87",
-            "brightRed": "#DE90AB",
-            "brightWhite": "#D5E5F1",
-            "brightYellow": "#87E9EA",
-            "cursorColor": "#C3D3DE",
-            "cyan": "#75A7D2",
-            "foreground": "#C3D3DE",
-            "green": "#90A94B",
-            "name": "jubi",
-            "purple": "#BC4F68",
-            "red": "#CF7B98",
-            "selectionBackground": "#5B5184",
-            "white": "#C3D3DE",
-            "yellow": "#6EBFC0"
+            "white": "#FDFDFD",
+            "yellow": "#F2A272"
         }
     ],
     "startOnUserLogin": true,
-    "tabWidthMode": "equal",
-    "theme": "dark",
+    "theme": "Catppuccin Mocha",
     "themes": 
     [
         {
-            "name": "Grace Kelly",
+            "name": "Catppuccin Mocha",
             "tab": 
             {
-                "background": "#000000FF",
-                "showCloseButton": "always",
-                "unfocusedBackground": "#63149BFF"
-            },
-            "tabRow": 
-            {
-                "background": "#061612FF",
-                "unfocusedBackground": "#061612FF"
-            },
-            "window": 
-            {
-                "applicationTheme": "dark",
-                "useMica": true
-            }
-        },
-        {
-            "name": "My Mica Theme",
-            "tab": 
-            {
-                "background": "terminalBackground",
+                "background": "#313244FF",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
             "tabRow": 
             {
-                "background": "#00000000",
-                "unfocusedBackground": null
+                "background": "#1E1E2EFF",
+                "unfocusedBackground": "#181825FF"
             },
             "window": 
             {
-                "applicationTheme": "system",
-                "useMica": true
+                "applicationTheme": "dark"
             }
         }
-    ],
-    "useAcrylicInTabRow": true
+    ]
 }

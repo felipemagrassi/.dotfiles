@@ -1,5 +1,6 @@
-vim.keymap.set('n', "<leader>\\", ":TestNearest<cr>", { noremap = true, silent = true })
-vim.keymap.set('n', "<leader><cr>", ":TestFile<cr>", { noremap = true, silent = true })
+vim.keymap.set('n', "<leader>tn", ":TestNearest<cr>", { noremap = true, silent = true })
+vim.keymap.set('n', "<leader>tf", ":TestFile<cr>", { noremap = true, silent = true })
+vim.keymap.set('n', "<leader>ts", ":TestSuite<cr>", { noremap = true, silent = true })
 
 local tmux_shell  = vim.fn.exists('$TMUX')
 
@@ -14,8 +15,13 @@ end
 vim.g["test#preserve_screen"] = 0
 
 local test = vim.api.nvim_create_augroup("test", { clear = true })
-local condition = vim.api.nvim_call_function("test#exists", {})
+local condition_testfile = vim.g["autorun/testfile"]
+local condition_testsuite = vim.g["autorun/testsuite"]
 
-if condition then
+if condition_testfile == 1 then
     vim.api.nvim_create_autocmd('BufWrite', { command = ":TestFile", group = test })
+end
+
+if condition_testsuite == 1 then
+    vim.api.nvim_create_autocmd('BufWrite', { command = ":TestSuite", group = test })
 end

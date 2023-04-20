@@ -25,7 +25,14 @@ lsp.configure('solargraph', {
     flags = { debounce_text_changes = 150 },
     settings = {
         solargraph = {
-            diagnostics = true
+            diagnostics = true,
+            autoformat = true,
+            completion = true,
+            diagnostic = true,
+            folding = true,
+            references = true,
+            rename = true,
+            symbols = true
         }
     }
 })

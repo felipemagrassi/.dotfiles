@@ -33,6 +33,12 @@
     "copyOnSelect": false,
     "defaultProfile": "{f53bebaa-44ec-4f2c-81a9-5928d626ca89}",
     "firstWindowPreference": "persistedWindowLayout",
+    "newTabMenu": 
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
     "profiles": 
     {
         "defaults": {},
@@ -52,9 +58,9 @@
             },
             {
                 "adjustIndistinguishableColors": "indexed",
-                "backgroundImage": null,
-                "backgroundImageOpacity": 0.2,
-                "colorScheme": "Catppuccin Mocha",
+                "backgroundImage": "\\\\wsl.localhost\\Ubuntu\\home\\felipe\\.dotfiles\\anime\\Selection_259.png",
+                "backgroundImageOpacity": 0.3,
+                "colorScheme": "Bright Lights",
                 "commandline": "ubuntu.exe",
                 "cursorShape": "filledBox",
                 "font": 
@@ -67,7 +73,7 @@
                 "icon": "https://assets.ubuntu.com/v1/49a1a858-favicon-32x32.png",
                 "intenseTextStyle": "all",
                 "name": "Ubuntu",
-                "opacity": 100,
+                "opacity": 80,
                 "tabTitle": "Ubuntu",
                 "useAcrylic": true
             }
@@ -75,6 +81,29 @@
     },
     "schemes": 
     [
+        {
+            "background": "#191919",
+            "black": "#191919",
+            "blue": "#76D4FF",
+            "brightBlack": "#191919",
+            "brightBlue": "#76D5FF",
+            "brightCyan": "#6CBFB5",
+            "brightGreen": "#B7E876",
+            "brightPurple": "#BA76E7",
+            "brightRed": "#FF355B",
+            "brightWhite": "#C2C8D7",
+            "brightYellow": "#FFC251",
+            "cursorColor": "#F34B00",
+            "cyan": "#6CBFB5",
+            "foreground": "#B3C9D7",
+            "green": "#B7E876",
+            "name": "Bright Lights",
+            "purple": "#BA76E7",
+            "red": "#FF355B",
+            "selectionBackground": "#B3C9D7",
+            "white": "#C2C8D7",
+            "yellow": "#FFC251"
+        },
         {
             "background": "#0C0C0C",
             "black": "#0C0C0C",
@@ -143,6 +172,29 @@
             "selectionBackground": "#585B70",
             "white": "#BAC2DE",
             "yellow": "#F9E2AF"
+        },
+        {
+            "background": "#020F01",
+            "black": "#001F0B",
+            "blue": "#15D00D",
+            "brightBlack": "#001510",
+            "brightBlue": "#19E20E",
+            "brightCyan": "#19E20E",
+            "brightGreen": "#19E20E",
+            "brightPurple": "#19E20E",
+            "brightRed": "#19E20E",
+            "brightWhite": "#FEFEFE",
+            "brightYellow": "#19E20E",
+            "cursorColor": "#15D00D",
+            "cyan": "#15D00D",
+            "foreground": "#16B10E",
+            "green": "#15D00D",
+            "name": "HaX0R_GR33N",
+            "purple": "#15D00D",
+            "red": "#15D00D",
+            "selectionBackground": "#D4FFC1",
+            "white": "#FAFAFA",
+            "yellow": "#15D00D"
         },
         {
             "background": "#200101",
@@ -463,7 +515,8 @@
             },
             "window": 
             {
-                "applicationTheme": "dark"
+                "applicationTheme": "dark",
+                "useMica": false
             }
         }
     ]

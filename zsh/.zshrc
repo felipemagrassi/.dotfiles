@@ -24,5 +24,6 @@ alias removebg="ruby $HOME/.dotfiles/remove_bg.rb '$HOME/.dotfiles/windows-termi
 /usr/bin/keychain $HOME/.ssh/id_ed25519
 source $HOME/.keychain/"$(hostname)"-sh
 
+eval "$(newbg)"
 eval "$(starship init zsh)"
 

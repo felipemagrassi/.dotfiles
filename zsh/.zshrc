@@ -19,6 +19,7 @@ alias vim='nvim'
 alias lvim='nvim'
 alias bat='batcat'
 alias newbg="ruby $HOME/.dotfiles/change_bg.rb '$HOME/.dotfiles/windows-terminal/setting.json'"
+alias removebg="ruby $HOME/.dotfiles/remove_bg.rb '$HOME/.dotfiles/windows-terminal/setting.json'"
 
 /usr/bin/keychain $HOME/.ssh/id_ed25519
 source $HOME/.keychain/"$(hostname)"-sh

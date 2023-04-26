@@ -58,8 +58,9 @@
             },
             {
                 "adjustIndistinguishableColors": "indexed",
-                "backgroundImage": "\\\\wsl.localhost\\Ubuntu\\home\\felipe\\.dotfiles\\wallpapers\\1.jpg",
-                "backgroundImageOpacity": 0.2,
+                "backgroundImage": "\\\\wsl.localhost\\Ubuntu\\home\\felipe\\.dotfiles\\wallpapers\\206423.jpg",
+                "backgroundImageOpacity": 0.3,
+                "backgroundImageStretchMode": "uniformToFill",
                 "colorScheme": "Bright Lights",
                 "commandline": "ubuntu.exe",
                 "cursorShape": "filledBox",

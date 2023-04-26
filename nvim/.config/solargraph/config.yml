@@ -8,7 +8,16 @@ exclude:
 require: []
 domains: []
 reporters:
-  - all!
+  - rubocop
+  - require_not_found
+  - typecheck
 require_paths: []
-plugins: []
+formatter:
+  rubocop:
+    cops: safe
+    except: []
+    only: []
+    extra_args: []
+plugins: 
+  - solargraph_rails
 max_files: 10000

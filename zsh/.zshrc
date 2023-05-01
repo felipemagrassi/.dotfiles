@@ -1,29 +1,30 @@
-function pretty_csv {
-    column -t -s, -n "$@" | less -F -S -X -K
-}
+#!/bin/sh
+[ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+# history
+HISTFILE=~/.zsh_history
 
-export ZSH="$HOME/.oh-my-zsh"
-export PATH=$PATH:/usr/local/go/bin
-export PATH=/home/felipe/.local/bin:$PATH
-export EDITOR='vim'
+# source
+plug "$HOME/.config/zsh/aliases.zsh"
+plug "$HOME/.config/zsh/exports.zsh"
 
-ZSH_THEME="junkfood"
-plugins=(git rails asdf keychain zsh-autosuggestions zsh-syntax-highlighting git-auto-fetch)
+# plugins
+plug "zsh-users/zsh-autosuggestions"
+plug "hlissner/zsh-autopair"
+plug "zap-zsh/supercharge"
+plug "zap-zsh/vim"
+plug "zap-zsh/zap-prompt"
+plug "zap-zsh/fzf"
+plug "zap-zsh/exa"
+plug "zsh-users/zsh-syntax-highlighting"
 
-source $ZSH/oh-my-zsh.sh
+# keybinds
+bindkey '^ ' autosuggest-accept
 
-alias rebase='git fetch origin master:master; git rebase master'
-alias vim='nvim'
-alias lvim='nvim'
-alias bat='batcat'
-alias newbg="ruby $HOME/.dotfiles/change_bg.rb '$HOME/.dotfiles/windows-terminal/setting.json'"
-alias removebg="ruby $HOME/.dotfiles/remove_bg.rb '$HOME/.dotfiles/windows-terminal/setting.json'"
-
-/usr/bin/keychain $HOME/.ssh/id_ed25519
-source $HOME/.keychain/"$(hostname)"-sh
+if command -v bat &> /dev/null; then
+  alias cat="bat -pp --theme \"Visual Studio Dark+\"" 
+  alias catt="bat --theme \"Visual Studio Dark+\"" 
+fi
 
 eval "$(newbg)"
-eval "$(starship init zsh)"
 

@@ -14,8 +14,7 @@ alias fgrep='fgrep --color=auto'
 alias ls='ls --color=auto'
 
 # Git aliases
-current_git_branch=$(git -C "$1" branch | sed  '/^\*/!d;s/\* //')
-alias gpsup='git push --set-upstream origin $current_git_branch'
+alias gpsup="git push --set-upstream origin $(git branch --show-current)"
 alias gs='git status'
 alias ga='git add --all'
 alias gc='git commit -m'

@@ -13,4 +13,30 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias ls='ls --color=auto'
 
-alias gpsup='git push --set-upstream origin $(git_current_branch)'
+# Git aliases
+current_git_branch=$(git -C "$1" branch | sed  '/^\*/!d;s/\* //')
+alias gpsup='git push --set-upstream origin $current_git_branch'
+alias gs='git status'
+alias ga='git add --all'
+alias gc='git commit -m'
+alias gca='git commit --amend --no-edit'
+alias gcb='git checkout -b'
+alias grs='git reset --soft HEAD~1'
+alias gd='git diff'
+alias gp='git push --force'
+alias gr='git rebase -i'
+alias gl="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'"
+
+# Rails
+
+alias devlog='tail -f log/development.log'
+alias rc='rails c'
+alias rcs='rails c --sandbox'
+alias rgm='rails g migration'
+alias rdm='rails db:migrate'
+alias rdr='rails db:rollback'
+
+# Tmux
+
+alias ta='tmux attach -t'
+alias tl='tmux list-sessions'

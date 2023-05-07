@@ -5,9 +5,10 @@ return {
 		event = "InsertEnter",
 		config = function()
 			require("copilot").setup({
-				suggestion = { enabled = false },
 				panel = { enabled = false },
-				filetypes = { markdown = true }
+				suggestion = { auto_trigger = true, keymap = { accept = "<Tab>" } },
+				filetypes = { markdown = true },
+				copilot_node_command = os.getenv("HOME") .. "/node"
 			})
 		end,
 	},
@@ -18,5 +19,4 @@ return {
 			require("copilot_cmp").setup()
 		end
 	}
-
 }

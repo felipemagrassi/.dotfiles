@@ -1,6 +1,6 @@
 return {
-	{ "tpope/vim-dispatch" },
-	{ "tpope/vim-rails" },
-	{ "tpope/vim-rake" },
+	{ "tpope/vim-dispatch",     ft = { 'ruby' } },
+	{ "tpope/vim-rails",        ft = { 'ruby' } },
+	{ "tpope/vim-rake",         ft = { 'ruby' } },
 	{ "tpope/vim-projectionist" },
 }

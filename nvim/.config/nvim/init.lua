@@ -40,6 +40,16 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.opt.smartindent = true
+
+vim.opt.wrap = false
+
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -242,7 +252,10 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
-
+vim.opt.incsearch = true
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
+vim.opt.isfname:append("@-@")
 -- [[ Basic Keymaps ]]
 vim.keymap.set('n', '<leader>md', ':MdEval<CR>')
 vim.keymap.set('n', '<leader>mp', ':MarkdownPreview<CR>')
@@ -287,7 +300,7 @@ vim.keymap.set('n', 'qq', '<cmd>q!<CR>', { desc = 'Quit' })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-vim.keymap.set('n', "<leader>e", "<cmd>Neotree toggle<CR>", { desc = 'Open filetree' })
+vim.keymap.set('n', "<leader>e", "<cmd>Neotree toggle reveal<CR>", { desc = 'Open filetree' })
 
 -- Copy to clipboard
 
@@ -518,6 +531,8 @@ mason_lspconfig.setup_handlers {
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load {}
+require 'luasnip'.filetype_extend("ruby", { "rails" })
+require("luasnip.loaders.from_snipmate").lazy_load({ paths = "~/.config/nvim/snippets" })
 
 luasnip.config.setup {}
 

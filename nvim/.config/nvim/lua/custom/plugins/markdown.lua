@@ -6,6 +6,14 @@ return {
 		ft = { "markdown" },
 	},
 	{
+		"mickael-menu/zk-nvim",
+		config = function()
+			require("zk").setup({
+				-- See Setup section below
+			})
+		end
+	},
+	{
 		"jubnzv/mdeval.nvim",
 		config = function()
 			vim.defer_fn(function()

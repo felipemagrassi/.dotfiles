@@ -275,6 +275,11 @@ vim.keymap.set('n', "<leader>tn", ":TestNearest<cr>", { noremap = true, silent =
 vim.keymap.set('n', "<leader>tf", ":TestFile<cr>", { noremap = true, silent = true })
 vim.keymap.set('n', "<leader>ts", ":TestSuite<cr>", { noremap = true, silent = true })
 
+vim.keymap.set("n", "<leader>nf", ":ZkNotes<cr>", { noremap = true, silent = true, desc = "Notes" })
+vim.keymap.set("n", "<leader>nt", ":ZkTags<cr>", { noremap = true, silent = true, desc = "Tags" })
+vim.keymap.set("n", "<leader>nn", ":ZkNew<cr>", { noremap = true, silent = true, desc = "New note" })
+
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 local tmux_shell = vim.fn.exists('$TMUX')
 
 if tmux_shell == 1 then

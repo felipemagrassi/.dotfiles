@@ -123,12 +123,32 @@ require('lazy').setup({
     },
   },
   {
+    'wadackel/vim-dogrun',
+    priority = 1000,
+  },
+  {
+    'morhetz/gruvbox',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'gruvbox'
+    end,
+  },
+  {
+    'liuchengxu/space-vim-dark',
+  },
+  {
+    'rebelot/kanagawa.nvim',
+  },
+  {
+    'catppuccin/nvim'
+  },
+  {
+    'folke/tokyonight.nvim'
+  },
+  {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
     priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
   },
   {
     -- Set lualine as statusline
@@ -331,6 +351,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
+  pickers = {
+    colorscheme = {
+      enable_preview = true,
+    },
+  },
   defaults = {
     mappings = {
       i = {

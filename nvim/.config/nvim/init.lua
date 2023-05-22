@@ -311,6 +311,7 @@ else
 end
 
 vim.g["test#preserve_screen"] = 0
+vim.g["test#ruby#rspec#options"] = "--color --format documentation"
 
 vim.api.nvim_create_user_command('AC', [[:execute "e " . eval('rails#buffer().alternate()')]], { nargs = 0 })
 

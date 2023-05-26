@@ -1,3 +1,9 @@
+
+gd() {
+  preview="git diff $@ --color=always -- {-1}"
+  git diff $@ --name-only | fzf -m --ansi --preview $preview
+}
+
 alias rebase='git fetch origin master:master; git rebase master'
 alias vim='nvim'
 alias lvim='nvim'
@@ -21,7 +27,6 @@ alias gc='git commit -m'
 alias gca='git commit --amend --no-edit'
 alias gcb='git checkout -b'
 alias grs='git reset --soft HEAD~1'
-alias gd='git diff'
 alias gp='git push --force'
 alias gr='git rebase -i'
 alias gl="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'"

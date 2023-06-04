@@ -295,9 +295,13 @@ vim.keymap.set('n', "<leader>tn", ":TestNearest<cr>", { noremap = true, silent =
 vim.keymap.set('n', "<leader>tf", ":TestFile<cr>", { noremap = true, silent = true })
 vim.keymap.set('n', "<leader>ts", ":TestSuite<cr>", { noremap = true, silent = true })
 
-vim.keymap.set("n", "<leader>nf", ":ZkNotes<cr>", { noremap = true, silent = true, desc = "Notes" })
-vim.keymap.set("n", "<leader>nt", ":ZkTags<cr>", { noremap = true, silent = true, desc = "Tags" })
+vim.keymap.set("n", "<leader>nf", ":ZkNotes { excludeHrefs = { 'node_modules' } }<cr>",
+  { noremap = true, silent = true, desc = "Notes" })
+vim.keymap.set("n", "<leader>nt", ":ZkTags { excludeHrefs = { 'node_modules' } }<cr>",
+  { noremap = true, silent = true, desc = "Tags" })
 vim.keymap.set("n", "<leader>nn", ":ZkNew<cr>", { noremap = true, silent = true, desc = "New note" })
+vim.keymap.set("v", "<leader>ne", "'<,'>ZkNewFromTitleSelection<cr>",
+  { noremap = true, silent = true, desc = "New note from selection" })
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 local tmux_shell = vim.fn.exists('$TMUX')
@@ -509,11 +513,6 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
   solargraph = {
     cmd = { 'solargraph', 'stdio' },
     filetypes = { 'ruby' },
@@ -584,7 +583,7 @@ cmp.setup {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete {},
-    ['<CR>'] = cmp.mapping.confirm {
+    ['<C-L>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },

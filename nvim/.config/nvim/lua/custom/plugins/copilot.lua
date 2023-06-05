@@ -6,7 +6,11 @@ return {
 		config = function()
 			require("copilot").setup({
 				panel = { enabled = false },
-				suggestion = { auto_trigger = true, keymap = { accept = "<M-L>" } },
+				suggestion = {
+					auto_trigger = true,
+					keymap = { accept = "<Tab>" },
+
+				},
 				filetypes = { markdown = true },
 				copilot_node_command = os.getenv("HOME") .. "/node"
 			})

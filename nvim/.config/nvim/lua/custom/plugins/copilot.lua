@@ -9,7 +9,6 @@ return {
 				suggestion = {
 					auto_trigger = true,
 					keymap = { accept = "<Tab>" },
-
 				},
 				filetypes = { markdown = true },
 				copilot_node_command = os.getenv("HOME") .. "/node"

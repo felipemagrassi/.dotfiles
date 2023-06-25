@@ -6,6 +6,14 @@ return {
     },
   },
   {
+    "rcarriga/nvim-notify",
+    opts = function(_, opts)
+      require("notify").setup({
+        background_colour = "#000000",
+      })
+    end,
+  },
+  {
     "folke/which-key.nvim",
     optional = true,
     opts = {

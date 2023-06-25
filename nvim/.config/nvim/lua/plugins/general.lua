@@ -19,6 +19,7 @@ return {
     opts = {
       defaults = {
         ["<leader>t"] = { name = "+test" },
+        ["<leader>n"] = { name = "+notes" },
       },
     },
   },

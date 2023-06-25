@@ -20,3 +20,5 @@ vim.keymap.set(
   "'<,'>ZkNewFromTitleSelection<cr>",
   { noremap = true, silent = true, desc = "New note from selection" }
 )
+
+vim.api.nvim_create_user_command("AC", [[:execute "e " . eval('rails#buffer().alternate()')]], { nargs = 0 })

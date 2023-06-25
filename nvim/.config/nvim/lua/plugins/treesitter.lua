@@ -9,6 +9,7 @@ return {
         "ruby",
         "typescript",
         "tsx",
+        "java",
         "gosum",
       })
     end,

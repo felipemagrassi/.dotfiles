@@ -16,6 +16,7 @@ return {
       table.insert(opts.ensure_installed, "js-debug-adapter")
       vim.list_extend(opts.ensure_installed, {
         "solargraph",
+        "jdtls",
       })
     end,
   },

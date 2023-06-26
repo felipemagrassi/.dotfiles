@@ -1,5 +1,14 @@
 -- Autocompletion
 return {
+  {
+    "zbirenbaum/copilot-cmp",
+    dependencies = "copilot.lua",
+    opts = {},
+    config = function(_, opts)
+      local copilot_cmp = require("copilot_cmp")
+      copilot_cmp.setup(opts)
+    end,
+  },
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
@@ -94,6 +103,7 @@ return {
 					end,
 				},
 				sources = {
+				    { name = "copilot", group_index = 2 },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "buffer" },

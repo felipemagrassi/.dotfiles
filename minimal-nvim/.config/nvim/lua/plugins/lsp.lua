@@ -1,91 +1,131 @@
--- LSP Configuration & Plugins
 return {
-	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-			"j-hui/fidget.nvim",
-			"folke/neodev.nvim",
-			"RRethy/vim-illuminate",
-			"hrsh7th/cmp-nvim-lsp",
-		},
-		config = function()
-			-- Set up Mason before anything else
-			require("mason").setup()
-			require("mason-lspconfig").setup({
-				ensure_installed = {
-					"lua_ls",
-					"pylsp",
-				},
-				automatic_installation = true,
-			})
+  {
+    "simrat39/symbols-outline.nvim",
+    cmd = "SymbolsOutline",
+    keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
+    opts = {
+      -- add your options that should be passed to the setup() function here
+      position = "right",
+    },
+  },
+  {
+    "williamboman/mason.nvim",
+    opts = function(_, opts)
+      opts.ensure_installed = opts.ensure_installed or {}
+      table.insert(opts.ensure_installed, "prettierd")
+      table.insert(opts.ensure_installed, "js-debug-adapter")
+      vim.list_extend(opts.ensure_installed, {
+        "solargraph",
+        "jdtls",
+      })
+    end,
+  },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    opts = function(_, opts)
+      local nls = require("null-ls")
+      table.insert(opts.sources, nls.builtins.formatting.prettierd)
+    end,
+  },
+  {
+    "folke/trouble.nvim",
+    -- opts will be merged with the parent spec
+    opts = { use_diagnostic_signs = true },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        eslint = {
+          settings = {
+            -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
+            workingDirectory = { mode = "auto" },
+          },
+        },
+        tsserver = {
+          settings = {
+            typescript = {
+              format = {
+                indentSize = vim.o.shiftwidth,
+                convertTabsToSpaces = vim.o.expandtab,
+                tabSize = vim.o.tabstop,
+              },
+            },
+            javascript = {
+              format = {
+                indentSize = vim.o.shiftwidth,
+                convertTabsToSpaces = vim.o.expandtab,
+                tabSize = vim.o.tabstop,
+              },
+            },
+            completions = {
+              completeFunctionCalls = true,
+            },
+          },
+        },
+        solargraph = {},
+        gopls = {
+          settings = {
+            gopls = {
+              semanticTokens = true,
+            },
+          },
+        },
+      },
+      setup = {
+        eslint = function()
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            callback = function(event)
+              if not require("lazyvim.plugins.lsp.format").enabled() then
+                -- exit early if autoformat is not enabled
+                return
+              end
 
-			-- Quick access via keymap
-			require("helpers.keys").map("n", "<leader>M", "<cmd>Mason<cr>", "Show Mason")
-
-			-- Neodev setup before LSP config
-			require("neodev").setup()
-
-			-- Turn on LSP status information
-			require("fidget").setup()
-
-			-- Set up cool signs for diagnostics
-			local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-			for type, icon in pairs(signs) do
-				local hl = "DiagnosticSign" .. type
-				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-			end
-
-			-- Diagnostic config
-			local config = {
-				virtual_text = false,
-				signs = {
-					active = signs,
-				},
-				update_in_insert = true,
-				underline = true,
-				severity_sort = true,
-				float = {
-					focusable = true,
-					style = "minimal",
-					border = "rounded",
-					source = "always",
-					header = "",
-					prefix = "",
-				},
-			}
-			vim.diagnostic.config(config)
-
-			-- This function gets run when an LSP connects to a particular buffer.
-			local on_attach = function(client, bufnr)
-				local lsp_map = require("helpers.keys").lsp_map
-
-				lsp_map("<leader>lr", vim.lsp.buf.rename, bufnr, "Rename symbol")
-				lsp_map("<leader>la", vim.lsp.buf.code_action, bufnr, "Code action")
-				lsp_map("<leader>ld", vim.lsp.buf.type_definition, bufnr, "Type definition")
-				lsp_map("<leader>ls", require("telescope.builtin").lsp_document_symbols, bufnr, "Document symbols")
-
-				lsp_map("gd", vim.lsp.buf.definition, bufnr, "Goto Definition")
-				lsp_map("gr", require("telescope.builtin").lsp_references, bufnr, "Goto References")
-				lsp_map("gI", vim.lsp.buf.implementation, bufnr, "Goto Implementation")
-				lsp_map("K", vim.lsp.buf.hover, bufnr, "Hover Documentation")
-				lsp_map("gD", vim.lsp.buf.declaration, bufnr, "Goto Declaration")
-
-				-- Create a command `:Format` local to the LSP buffer
-				vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-					vim.lsp.buf.format()
-				end, { desc = "Format current buffer with LSP" })
-
-				lsp_map("<leader>ff", "<cmd>Format<cr>", bufnr, "Format")
-
-				-- Attach and configure vim-illuminate
-				require("illuminate").on_attach(client)
-			end
-
-			-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-		end,
-	},
+              local client = vim.lsp.get_active_clients({ bufnr = event.buf, name = "eslint" })[1]
+              if client then
+                local diag = vim.diagnostic.get(event.buf, { namespace = vim.lsp.diagnostic.get_namespace(client.id) })
+                if #diag > 0 then
+                  vim.cmd("EslintFixAll")
+                end
+              end
+            end,
+          })
+        end,
+        tsserver = function(_, opts)
+          require("lazyvim.util").on_attach(function(client, buffer)
+            if client.name == "tsserver" then
+          -- stylua: ignore
+          vim.keymap.set("n", "<leader>co", "<cmd>TypescriptOrganizeImports<CR>", { buffer = buffer, desc = "Organize Imports" })
+          -- stylua: ignore
+          vim.keymap.set("n", "<leader>cR", "<cmd>TypescriptRenameFile<CR>", { desc = "Rename File", buffer = buffer })
+            end
+          end)
+          require("typescript").setup({ server = opts })
+          return true
+        end,
+      },
+      gopls = function()
+        -- workaround for gopls not supporting semantictokensprovider
+        -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
+        require("lazyvim.util").on_attach(function(client, _)
+          if client.name == "gopls" then
+            if not client.server_capabilities.semanticTokensProvider then
+              local semantic = client.config.capabilities.textDocument.semanticTokens
+              client.server_capabilities.semanticTokensProvider = {
+                full = true,
+                legend = {
+                  tokenTypes = semantic.tokenTypes,
+                  tokenModifiers = semantic.tokenModifiers,
+                },
+                range = true,
+              }
+            end
+          end
+        end)
+        -- end workaround
+      end,
+    },
+  },
+  { "jose-elias-alvarez/typescript.nvim" },
 }
+

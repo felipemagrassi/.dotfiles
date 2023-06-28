@@ -26,3 +26,9 @@ vim.api.nvim_create_user_command("AC", [[:execute "e " . eval('rails#buffer().al
 -- yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
+
+vim.keymap.set("n", "<leader>tn", ":TestNearest<cr>", { noremap = true, silent = true, desc = "Test Nearest" })
+vim.keymap.set("n", "<leader>tf", ":TestFile<cr>", { noremap = true, silent = true, desc = "Test File" })
+vim.keymap.set("n", "<leader>ts", ":TestSuite<cr>", { noremap = true, silent = true, desc = "Test Suite" })
+vim.keymap.set("n", "<leader>tl", ":TestLast<cr>", { noremap = true, silent = true, desc = "Test Last" })
+vim.keymap.set("n", "<leader>tv", ":TestVisit<cr>", { noremap = true, silent = true, desc = "Test Visit" })

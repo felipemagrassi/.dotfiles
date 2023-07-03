@@ -13,13 +13,19 @@ vim.keymap.set(
   ":ZkTags { excludeHrefs = { 'node_modules' } }<cr>",
   { noremap = true, silent = true, desc = "Tags" }
 )
-vim.keymap.set("n", "<leader>nn", ":ZkNew<cr>", { noremap = true, silent = true, desc = "New note" })
+vim.keymap.set(
+  "n",
+  "<leader>nn",
+  ":ZkNew({title = '' })<LEFT><LEFT><LEFT><LEFT>",
+  { noremap = true, silent = true, desc = "New note" }
+)
 vim.keymap.set(
   "v",
   "<leader>ne",
   "'<,'>ZkNewFromTitleSelection<cr>",
   { noremap = true, silent = true, desc = "New note from selection" }
 )
+vim.keymap.set("n", "<leader>mp", ":MarkdownPreview<cr>", { noremap = true, silent = true, desc = "markdown preview" })
 
 vim.api.nvim_create_user_command("AC", [[:execute "e " . eval('rails#buffer().alternate()')]], { nargs = 0 })
 

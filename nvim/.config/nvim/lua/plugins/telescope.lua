@@ -12,6 +12,11 @@ return {
     },
     -- change some options
     opts = {
+      pickers = {
+        colorscheme = {
+          enable_preview = true,
+        },
+      },
       defaults = {
         layout_strategy = "horizontal",
         layout_config = { prompt_position = "top" },

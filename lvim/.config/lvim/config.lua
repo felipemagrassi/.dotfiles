@@ -8,6 +8,13 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 lvim.format_on_save.enabled = true
 
+vim.cmd([[ let g:test#strategy = 'neovim' ]])
+vim.cmd([[ let g:test#neovim#term_position = 'vert' ]])
+vim.cmd([[ let g:test#javascript#runner = 'jest' ]])
+vim.cmd([[ let g:test#preserve_screen = 1 ]])
+vim.cmd([[ let g:test#ruby#rspec#executable = 'bundle exec rspec' ]])
+vim.cmd([[ let g:test#ruby#rspec#options = '--format documentation --color' ]])
+
 lvim.plugins = {
   { "tpope/vim-dispatch",      ft = { "ruby" } },
   {
@@ -15,6 +22,16 @@ lvim.plugins = {
     ft = { "ruby" },
     keys = {
       { "<leader>ja", [[:execute "e " . eval('rails#buffer().alternate()')<cr>]], desc = 'Jump rails alternate' } }
+  },
+  {
+    "vim-test/vim-test",
+    keys = {
+      { "<leader>tn", ":TestNearest<cr>", desc = "Test Nearest" },
+      { "<leader>tf", ":TestFile<cr>",    desc = "Test File" },
+      { "<leader>ts", ":TestSuite<cr>",   desc = "Test Suite" },
+      { "<leader>tl", ":TestLast<cr>",    desc = "Test Last" },
+      { "<leader>tv", ":TestVisit<cr>",   desc = "Test Visit" },
+    },
   },
   {
     "folke/tokyonight.nvim",

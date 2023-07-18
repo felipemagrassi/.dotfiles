@@ -112,4 +112,3 @@ source "$HOME/.config/zsh/exports.zsh"
 source "$HOME/.config/zsh/aliases.zsh"
 
 eval "$(starship init zsh)"
-source /home/felipe/alacritty/extra/completions/alacritty.bash

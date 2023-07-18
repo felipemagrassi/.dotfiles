@@ -12,7 +12,7 @@ vim.opt.swapfile = false
 
 lvim.format_on_save.enabled = true
 
-vim.cmd([[ let g:test#strategy = 'neovim' ]])
+vim.cmd([[ let g:test#strategy = 'vimux' ]])
 vim.cmd([[ let g:test#neovim#term_position = 'vert' ]])
 vim.cmd([[ let g:test#javascript#runner = 'jest' ]])
 vim.cmd([[ let g:test#preserve_screen = 1 ]])
@@ -20,7 +20,8 @@ vim.cmd([[ let g:test#ruby#rspec#executable = 'bundle exec rspec' ]])
 vim.cmd([[ let g:test#ruby#rspec#options = '--format documentation --color' ]])
 
 lvim.plugins = {
-  { "tpope/vim-dispatch",      ft = { "ruby" } },
+  { "tpope/vim-dispatch", ft = { "ruby" } },
+  { "preservim/vimux" },
   {
     "tpope/vim-rails",
     ft = { "ruby" },
@@ -122,6 +123,7 @@ table.insert(lvim.plugins, {
   config = function()
     vim.defer_fn(function()
       require("copilot").setup({
+        copilot_node_command = vim.fn.expand("$HOME") .. vim.fn.expand("/node"),
         filetypes = {
           markdown = true
         }
@@ -131,7 +133,7 @@ table.insert(lvim.plugins, {
   end,
 })
 
-lvim.transparent_window = true
+lvim.transparent_window = false
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {

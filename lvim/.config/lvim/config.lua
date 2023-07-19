@@ -29,6 +29,13 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
+lvim.builtin.which_key.mappings["l"]["f"] = {
+  function()
+    require("lvim.lsp.utils").format { timeout_ms = 2000 }
+  end,
+  "Format",
+}
+
 lvim.plugins = {
   { "tpope/vim-dispatch",      ft = { "ruby" } },
   {
@@ -139,6 +146,10 @@ lvim.transparent_window = false
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
+  {
+    command = "rubocop",
+    filetypes = { "ruby" }
+  },
   {
     command = "clang-format",
     filetypes = { "java" },

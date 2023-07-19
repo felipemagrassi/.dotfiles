@@ -3,40 +3,39 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
--- yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
+
+vim.keymap.set("n", "<S-h>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Prev Buffer" })
+vim.keymap.set("n", "<S-l>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next Buffer" })
 
 vim.opt.relativenumber = false
 vim.opt.swapfile = false
 
 lvim.format_on_save.enabled = true
 
-vim.cmd([[ let g:test#strategy = 'vimux' ]])
-vim.cmd([[ let g:test#neovim#term_position = 'vert' ]])
-vim.cmd([[ let g:test#javascript#runner = 'jest' ]])
-vim.cmd([[ let g:test#preserve_screen = 1 ]])
-vim.cmd([[ let g:test#ruby#rspec#executable = 'bundle exec rspec' ]])
-vim.cmd([[ let g:test#ruby#rspec#options = '--format documentation --color' ]])
+local function augroup(name)
+  return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
+end
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  group = augroup("auto_create_dir"),
+  callback = function(event)
+    if event.match:match("^%w%w+://") then
+      return
+    end
+    local file = vim.loop.fs_realpath(event.match) or event.match
+    vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
+  end,
+})
 
 lvim.plugins = {
-  { "tpope/vim-dispatch", ft = { "ruby" } },
-  { "preservim/vimux" },
+  { "tpope/vim-dispatch",      ft = { "ruby" } },
   {
     "tpope/vim-rails",
     ft = { "ruby" },
     keys = {
       { "<leader>ja", [[:execute "e " . eval('rails#buffer().alternate()')<cr>]], desc = 'Jump rails alternate' } }
-  },
-  {
-    "vim-test/vim-test",
-    keys = {
-      { "<leader>tn", ":TestNearest<cr>", desc = "Test Nearest" },
-      { "<leader>tf", ":TestFile<cr>",    desc = "Test File" },
-      { "<leader>ts", ":TestSuite<cr>",   desc = "Test Suite" },
-      { "<leader>tl", ":TestLast<cr>",    desc = "Test Last" },
-      { "<leader>tv", ":TestVisit<cr>",   desc = "Test Visit" },
-    },
   },
   {
     "folke/tokyonight.nvim",
@@ -48,10 +47,14 @@ lvim.plugins = {
     priority = 1000,
     event = "VimEnter",
   },
+
+  {
+    "preservim/vimux"
+  },
   {
     "vim-test/vim-test",
     config = function()
-      vim.cmd([[ let g:test#strategy = 'neovim' ]])
+      vim.cmd([[ let g:test#strategy = 'vimux' ]])
       vim.cmd([[ let g:test#neovim#term_position = 'vert' ]])
       vim.cmd([[ let g:test#javascript#runner = 'jest' ]])
       vim.cmd([[ let g:test#preserve_screen = 1 ]])
@@ -123,7 +126,6 @@ table.insert(lvim.plugins, {
   config = function()
     vim.defer_fn(function()
       require("copilot").setup({
-        copilot_node_command = vim.fn.expand("$HOME") .. vim.fn.expand("/node"),
         filetypes = {
           markdown = true
         }

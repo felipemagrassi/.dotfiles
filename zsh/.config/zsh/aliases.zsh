@@ -18,6 +18,7 @@ alias shipit="git push --set-upstream origin HEAD"
 alias gs='git status'
 alias ga='git add --all'
 alias gc='git commit -m'
+alias gct='git commit -m "$(date +"%D %T")"'
 alias gca='git commit --amend --no-edit'
 alias gcb='git checkout -b'
 alias grs='git reset --soft HEAD~1'

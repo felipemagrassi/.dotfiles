@@ -79,6 +79,21 @@ require('lazy').setup({
     lazy = false,
     priority = 1000,
   },
+  -- Unless you are still migrating, remove the deprecated commands from v1.x
+
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    version = "*",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
+    keys = { { '<leader>e', '<cmd>Neotree toggle<cr>', desc = 'Document Diagnostics (Trouble)' } },
+    config = function()
+      require('neo-tree').setup {}
+    end,
+  },
   {
     "ThePrimeagen/harpoon",
     keys = function()
@@ -310,7 +325,7 @@ require('lazy').setup({
       })
     end,
   },
-  { "tpope/vim-dispatch",      ft = { "ruby" } },
+  { "tpope/vim-dispatch", ft = { "ruby" } },
   {
     "tpope/vim-rails",
     ft = { "ruby" },
@@ -387,7 +402,7 @@ require('lazy').setup({
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
-  -- require 'kickstart.plugins.autoformat',
+  require 'kickstart.plugins.autoformat',
   -- require 'kickstart.plugins.debug',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -577,7 +592,6 @@ vim.keymap.set('n', '<leader>jc', "<cmd>:e ~/.config/nvim/init.lua<cr>", { desc 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- [[ Configure LSP ]]
@@ -731,6 +745,8 @@ cmp.setup {
     { name = 'luasnip',  group_index = 2 },
   },
 }
+
+vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

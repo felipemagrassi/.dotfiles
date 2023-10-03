@@ -80,6 +80,8 @@ require('lazy').setup({
     priority = 1000,
   },
   -- Unless you are still migrating, remove the deprecated commands from v1.x
+  --
+  { "norcalli/nvim-colorizer.lua" },
 
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -188,7 +190,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  { 'folke/which-key.nvim',       opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -220,13 +222,18 @@ require('lazy').setup({
     },
   },
   {
+    'lukas-reineke/headlines.nvim',
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    opts = {},
+    ft = { 'markdown' },
+  },
+  {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
       require("copilot").setup({
-        -- copilot_node_command = vim.fn.expand("$HOME") .. "/.config/nvm/versions/node/v16.14.2/bin/node", -- Node.js version must be > 16.x
-        copilot_node_command = vim.fn.expand("$HOME") .. "/node",
+        -- copilot_node_command = vim.fn.expand("$HOME") .. "/.config/nvm/versions/node/v16.14.2/bin/node", -- Node.js version must be > 16.x copilot_node_command = vim.fn.expand("$HOME") .. "/node",
         suggestion = { enabled = false },
         panel = { enabled = false },
         filetypes = {
@@ -246,7 +253,7 @@ require('lazy').setup({
     'navarasu/onedark.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'tokyonight'
+      vim.cmd.colorscheme 'onedark'
     end,
   },
   {
@@ -256,7 +263,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'tokyonight',
+        theme = 'onedark',
         component_separators = '|',
         section_separators = '',
       },
@@ -319,7 +326,7 @@ require('lazy').setup({
       })
     end,
   },
-  { "tpope/vim-dispatch", ft = { "ruby" } },
+  { "tpope/vim-dispatch",    ft = { "ruby" } },
   {
     "tpope/vim-rails",
     ft = { "ruby" },
@@ -650,6 +657,7 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+  remark_ls = { settings = { requireConfig = true } },
   solargraph = {},
   lua_ls = {
     Lua = {
@@ -767,5 +775,14 @@ end)
 
 require("ibl").setup { indent = { highlight = highlight } }
 
+
+vim.cmd [[highlight Headline guibg=#21262d]]
+vim.cmd [[highlight CodeBlock guibg=#1C1C1C]]
+vim.cmd [[highlight Dash guibg=#56b6c2 gui=bold]]
+
+require("headlines").setup {
+}
+
+require 'colorizer'.setup()
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

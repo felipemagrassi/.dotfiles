@@ -91,7 +91,7 @@ require('lazy').setup({
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
     },
-    keys = { { '<leader>e', '<cmd>Neotree toggle<cr>', desc = 'Document Diagnostics (Trouble)' } },
+    keys = { { '<leader>e', '<cmd>Neotree toggle reveal<cr>', desc = 'Document Diagnostics (Trouble)' } },
     config = function()
       require('neo-tree').setup {}
     end,

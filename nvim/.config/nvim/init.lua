@@ -357,6 +357,8 @@ require('lazy').setup({
     "vim-test/vim-test",
     config = function()
       vim.cmd([[ let g:test#strategy = 'neovim' ]])
+      vim.cmd([[ let g:test#neovim#start_normal = 1 ]])
+      vim.cmd([[ let g:test#neovim#term_position = "vert botright" ]])
       vim.cmd([[ let g:test#javascript#runner = 'jest' ]])
       vim.cmd([[ let g:test#preserve_screen = 1 ]])
       vim.cmd([[ let g:test#ruby#rspec#executable = 'bundle exec rspec' ]])
@@ -456,6 +458,14 @@ vim.wo.signcolumn = 'yes'
 -- Decrease update time
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
+
+vim.opt.guicursor = {
+  'n-v-c:block-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100',
+  'i-ci:ver25-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100',
+  'r:hor50-Cursor/lCursor-blinkwait100-blinkon100-blinkoff100'
+}
+
+vim.opt.relativenumber = true
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'

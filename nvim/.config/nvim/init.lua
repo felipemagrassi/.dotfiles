@@ -223,12 +223,6 @@ require('lazy').setup({
     },
   },
   {
-    'lukas-reineke/headlines.nvim',
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    opts = {},
-    ft = { 'markdown' },
-  },
-  {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
@@ -295,37 +289,54 @@ require('lazy').setup({
   },
   {
     "mickael-menu/zk-nvim",
-    keys = {
-      { "<leader>nf", ":ZkNotes { excludeHrefs = { 'node_modules' } }<cr>",
-        {
-          noremap = true,
-          silent = true,
-          desc = "Notes"
-        } },
-      { "<leader>nt", ":ZkTags { excludeHrefs = { 'node_modules' } }<cr>",
-        {
-          noremap = true,
-          silent = true,
-          desc = "Tags"
-        } },
-      { "<leader>nn", ":ZkNew({title = '' })<LEFT><LEFT><LEFT><LEFT>",
-        {
-          noremap = true,
-          silent = true,
-          desc = "New note"
-        } },
-      { "<leader>ne", "'<,'>ZkNewFromTitleSelection<cr>",
-        {
-          noremap = true,
-          silent = true,
-          desc = "New note from selection"
-        } },
-    },
     config = function()
       require("zk").setup({
         picker = "telescope",
       })
+      local function map(...) vim.api.nvim_buf_set_keymap(0, ...) end
+      local opts = { noremap = true, silent = false }
+      -- Open the link under the caret.
+      map("n", "<CR>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+
+      -- Preview a linked note.
+      map("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+      -- Open the code actions for a visual selection.
     end,
+    keys = {
+      { "<leader>nl", "<Cmd>ZkLinks<CR>", {
+        desc =
+        "Zk Links",
+        noremap = true,
+        silent = false
+      } },
+      { "<leader>nb", "<Cmd>ZkBacklinks<CR>", {
+        desc =
+        "Zk BackLinks",
+        noremap = true,
+        silent = false
+      } },
+      { "<leader>nn", "<Cmd>ZkNew { dir = vim.fn.expand('%:p:h'), title = vim.fn.input('Title: ') }<CR>", {
+        desc =
+        "Zk BackLinks",
+        noremap = true,
+        silent = false
+      } },
+      { "<leader>nnc",
+        ":'<,'>ZkNewFromContentSelection { dir = vim.fn.expand('%:p:h'), title = vim.fn.input('Title: ') }<CR>",
+        {
+          desc =
+          "Zk Content",
+          noremap = true,
+          silent = false
+        } },
+      { "<leader>nnt", ":'<,'>ZkNewFromTitleSelection { dir = vim.fn.expand('%:p:h') }<CR>",
+        {
+          desc =
+          "Zk Title",
+          noremap = true,
+          silent = false
+        } },
+    }
   },
   { "tpope/vim-dispatch", ft = { "ruby" } },
   {
@@ -668,7 +679,7 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-  remark_ls = { settings = { requireConfig = true } },
+  marksman = {},
   solargraph = {},
   lua_ls = {
     Lua = {
@@ -786,14 +797,7 @@ end)
 
 require("ibl").setup { indent = { highlight = highlight } }
 
-
-vim.cmd [[highlight Headline guibg=#21262d]]
-vim.cmd [[highlight CodeBlock guibg=#1C1C1C]]
-vim.cmd [[highlight Dash guibg=#56b6c2 gui=bold]]
-
-require("headlines").setup {
-}
-
 require 'colorizer'.setup()
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

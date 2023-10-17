@@ -248,7 +248,7 @@ require('lazy').setup({
     'navarasu/onedark.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'catppuccin'
+      vim.cmd.colorscheme 'onedark'
     end,
   },
   {
@@ -258,7 +258,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'catppuccin',
+        theme = 'onedark',
         component_separators = '|',
         section_separators = '',
       },
@@ -404,7 +404,12 @@ require('lazy').setup({
       },
     },
   },
-
+  {
+    'lukas-reineke/headlines.nvim',
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    ft = { "markdown" },
+    config = true, -- or `opts = {}`
+  },
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
@@ -797,6 +802,23 @@ end)
 
 require("ibl").setup { indent = { highlight = highlight } }
 
+
+vim.cmd [[highlight Headline1 guibg=#C678DD guifg=#000000 gui=bold]]
+vim.cmd [[highlight Headline2 guibg=#98C379 guifg=#000000 gui=bold]]
+vim.cmd [[highlight Headline3 guibg=#61AFEF guifg=#000000 gui=bold]]
+--
+
+require("headlines").setup {
+  markdown = {
+    headline_highlights = {
+      "Headline1",
+      "Headline2",
+      "Headline3"
+    },
+    fat_headlines = false,
+    fat_headline_upper_string = "▃",
+  },
+}
 require 'colorizer'.setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`

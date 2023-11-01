@@ -248,7 +248,7 @@ require('lazy').setup({
     'navarasu/onedark.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      vim.cmd.colorscheme 'tokyonight'
     end,
   },
   {
@@ -258,7 +258,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'tokyonight',
         component_separators = '|',
         section_separators = '',
       },
@@ -338,7 +338,7 @@ require('lazy').setup({
         } },
     }
   },
-  { "tpope/vim-dispatch", ft = { "ruby" } },
+  { "tpope/vim-dispatch" },
   {
     "tpope/vim-rails",
     ft = { "ruby" },
@@ -502,6 +502,10 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -616,6 +620,9 @@ require('nvim-treesitter.configs').setup {
 }
 
 vim.keymap.set('n', '<leader>jc', "<cmd>:e ~/.config/nvim/init.lua<cr>", { desc = "Jump to config" })
+
+vim.keymap.set('n', '<F6>', [[<cmd>Dispatch browser-sync start --server --files "*.js, *.html, *.css"<CR>]],
+  { desc = "Browser sync" })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })

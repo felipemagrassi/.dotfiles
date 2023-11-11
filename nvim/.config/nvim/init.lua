@@ -247,9 +247,6 @@ require('lazy').setup({
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
     priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'tokyonight'
-    end,
   },
   {
     -- Set lualine as statusline
@@ -268,6 +265,10 @@ require('lazy').setup({
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
+  },
+
+  {
+    "xiyaowong/transparent.nvim"
   },
 
   -- "gc" to comment visual regions/lines
@@ -350,6 +351,13 @@ require('lazy').setup({
     name = "catppuccin",
     priority = 1000,
     event = "VimEnter",
+    config = function()
+      require("catppuccin").setup({
+        transparent_background = true
+      })
+
+      vim.cmd [[colorscheme catppuccin]]
+    end
   },
   {
     "iamcco/markdown-preview.nvim",
@@ -813,7 +821,6 @@ require("ibl").setup { indent = { highlight = highlight } }
 vim.cmd [[highlight Headline1 guibg=#C678DD guifg=#000000 gui=bold]]
 vim.cmd [[highlight Headline2 guibg=#98C379 guifg=#000000 gui=bold]]
 vim.cmd [[highlight Headline3 guibg=#61AFEF guifg=#000000 gui=bold]]
---
 
 require("headlines").setup {
   markdown = {

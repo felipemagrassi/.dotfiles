@@ -79,6 +79,8 @@ require('lazy').setup({
     lazy = false,
     priority = 1000,
   },
+
+  { "ellisonleao/gruvbox.nvim" },
   -- Unless you are still migrating, remove the deprecated commands from v1.x
   --
   { "norcalli/nvim-colorizer.lua" },
@@ -96,7 +98,7 @@ require('lazy').setup({
       require('neo-tree').setup {}
     end,
   },
-  { 'fatih/vim-go',               ft = "go" },
+  { 'fatih/vim-go',         ft = "go" },
   {
     "ThePrimeagen/harpoon",
     keys = function()
@@ -191,7 +193,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  { 'folke/which-key.nvim', opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -265,10 +267,6 @@ require('lazy').setup({
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
-  },
-
-  {
-    "xiyaowong/transparent.nvim"
   },
 
   -- "gc" to comment visual regions/lines
@@ -356,7 +354,7 @@ require('lazy').setup({
         transparent_background = true
       })
 
-      vim.cmd [[colorscheme catppuccin]]
+      vim.cmd [[colorscheme gruvbox]]
     end
   },
   {

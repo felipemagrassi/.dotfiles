@@ -79,7 +79,11 @@ require('lazy').setup({
     lazy = false,
     priority = 1000,
   },
-
+  { "EdenEast/nightfox.nvim" },
+  { "Shatur/neovim-ayu" },
+  { "daschw/leaf.nvim" },
+  { 'rose-pine/neovim',           name = 'rose-pine' },
+  { 'xiyaowong/transparent.nvim' },
   { "ellisonleao/gruvbox.nvim" },
   -- Unless you are still migrating, remove the deprecated commands from v1.x
   --
@@ -577,6 +581,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
+  pickers = {
+    colorscheme = {
+      enable_preview = true
+    }
+  },
   defaults = {
     mappings = {
       i = {
@@ -910,8 +919,7 @@ require("gruvbox").setup({
   transparent_mode = false,
 })
 
-vim.cmd("colorscheme gruvbox")
-vim.api.nvim_set_hl(0, "Normal", { guibg = NONE, ctermbg = NONE })
+vim.cmd("colorscheme rose-pine")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

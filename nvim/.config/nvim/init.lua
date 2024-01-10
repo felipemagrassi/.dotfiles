@@ -65,7 +65,6 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
 
   -- Git related plugins
   'tpope/vim-fugitive',
@@ -686,6 +685,7 @@ require('nvim-treesitter.configs').setup {
 }
 
 vim.keymap.set('n', '<leader>jc', "<cmd>:e ~/.config/nvim/init.lua<cr>", { desc = "Jump to config" })
+vim.keymap.set('n', '<leader>msi', "<cmd>:%s/^/'/c | %s/$/',/c<cr>", { desc = "Add quotes and commas" })
 
 vim.keymap.set('n', '<F6>', [[<cmd>Dispatch browser-sync start --server --files "*.js, *.html, *.css"<CR>]],
   { desc = "Browser sync" })
@@ -919,7 +919,7 @@ require("gruvbox").setup({
   transparent_mode = false,
 })
 
-vim.cmd("colorscheme rose-pine")
+vim.cmd("colorscheme onedark")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

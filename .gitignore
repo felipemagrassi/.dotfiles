@@ -67,3 +67,6 @@ yarn-debug.log*
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
+
+# lazy lock
+nvim/.config/nvim/lazy-lock.json

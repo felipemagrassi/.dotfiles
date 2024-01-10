@@ -398,7 +398,8 @@ require('lazy').setup({
     "tpope/vim-rails",
     ft = { "ruby" },
     keys = {
-      { "<leader>ja", [[:execute "e " . eval('rails#buffer().alternate()')<cr>]], desc = 'Jump rails alternate' } }
+      { "<leader>ja", [[:execute "e " . eval('rails#buffer().alternate()')<cr>]], desc = 'Jump rails alternate' }
+    }
   },
   {
     "catppuccin/nvim",
@@ -741,6 +742,7 @@ local on_attach = function(_, bufnr)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
 end
+
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.

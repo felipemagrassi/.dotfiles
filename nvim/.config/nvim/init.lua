@@ -297,6 +297,7 @@ require('lazy').setup({
   },
   {
     "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
     config = function()
       require("copilot_cmp").setup()
     end
@@ -861,6 +862,15 @@ local highlight = {
   "RainbowViolet",
   "RainbowCyan",
 }
+
+local lspkind = require('lspkind')
+lspkind.init({
+  symbol_map = {
+    Copilot = "",
+  }
+})
+
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 
 local hooks = require "ibl.hooks"
 -- create the highlight groups in the highlight setup hook, so they are reset

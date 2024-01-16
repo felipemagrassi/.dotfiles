@@ -11,9 +11,8 @@ sudo apt-get install -y \
   fzf \
   lzma
 
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-curl -sS https://starship.rs/install.sh | sh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+rm ~/.zshrc
 
 stow zsh
 stow starship

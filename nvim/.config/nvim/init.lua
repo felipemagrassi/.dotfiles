@@ -79,6 +79,7 @@ require('lazy').setup({
     priority = 1000,
   },
   { "EdenEast/nightfox.nvim" },
+  { "onsails/lspkind.nvim" },
   { "Shatur/neovim-ayu" },
   { "daschw/leaf.nvim" },
   { 'rose-pine/neovim',           name = 'rose-pine' },

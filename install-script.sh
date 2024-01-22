@@ -2,6 +2,7 @@
 sudo apt-get install -y \
   stow \
   zsh \
+  tmux \
   git \
   curl \
   dirmngr gpg gawk \

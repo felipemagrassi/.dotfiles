@@ -72,6 +72,9 @@ require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
+  -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-sleuth',
+
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -665,7 +668,16 @@ vim.keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left>
 vim.keymap.set('n', '<leader>jc', "<cmd>:e ~/.config/nvim/init.lua<cr>", { desc = "Jump to config" })
 vim.keymap.set('n', '<leader>msi', "<cmd>:%s/^/'/c | %s/$/',/c<cr>", { desc = "Add quotes and commas" })
 
-vim.o.shiftwidth = 2
+vim.o.syntax = 'on'
+
+vim.cmd [[
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set noexpandtab
+set smartindent
+set smarttab
+]]
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

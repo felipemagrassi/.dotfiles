@@ -3,6 +3,7 @@ sudo apt-get install -y \
   stow \
   zsh \
   tmux \
+  xclip \
   git \
   curl \
   dirmngr gpg gawk \

@@ -16,3 +16,4 @@ rerun.txt
 tmp/**/*
 /tags
 **/lazy-lock.json
+mpv/.config/mpv/shaders/cache/*

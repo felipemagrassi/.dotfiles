@@ -1,5 +1,4 @@
 alias rebase='git fetch origin master:master; git rebase master'
-alias vim='nvim'
 alias lvim='$HOME/.local/bin/lvim'
 alias newbg="ruby $HOME/.dotfiles/change_bg.rb '$HOME/.dotfiles/windows-terminal/setting.json'"
 alias removebg="ruby $HOME/.dotfiles/remove_bg.rb '$HOME/.dotfiles/windows-terminal/setting.json'"

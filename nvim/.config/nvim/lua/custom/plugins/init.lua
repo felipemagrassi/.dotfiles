@@ -2,6 +2,8 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
+vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+
 return {
   {
     "folke/tokyonight.nvim",
@@ -15,6 +17,21 @@ return {
     keys = {
       { "<leader>ja", [[:execute "e " . eval('rails#buffer().alternate()')<cr>]], desc = 'Jump rails alternate' }
     }
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    version = "*",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
+    keys = {
+      { "<leader>k", ":Neotree reveal toggle<cr>", desc = "Toggle NvimTree" },
+    },
+    config = function()
+      require('neo-tree').setup {}
+    end,
   },
   {
     "catppuccin/nvim",

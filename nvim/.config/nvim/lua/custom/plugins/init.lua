@@ -134,6 +134,12 @@ return {
   },
   { 'fatih/vim-go', ft = "go" },
   {
+    'barret-ruth/live-server.nvim',
+    build = 'pnpm add -g live-server',
+    cmd = { 'LiveServerStart', 'LiveServerStop' }
+    config = true
+  },
+  {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",

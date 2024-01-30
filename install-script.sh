@@ -2,6 +2,7 @@
 sudo apt-get install -y \
   stow \
   zsh \
+  vim \
   tmux \
   xclip \
   git \
@@ -13,6 +14,17 @@ sudo apt-get install -y \
   fzf \
   lzma
 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+mkdir ~/.local/share/fonts -p
+cp fonts/Meslo* ~/.local/share/fonts
+
+fc-cache -f -v
+
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 rm ~/.zshrc
 

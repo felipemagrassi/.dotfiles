@@ -12,6 +12,7 @@ sudo apt-get install -y \
   keychain \
   mpv  \
   fzf \
+  cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 \
   lzma
 
 wget -qO - https://regolith-desktop.org/regolith.key | \
@@ -41,6 +42,8 @@ rm ~/.zshrc
 stow zsh
 stow starship
 stow mpv
+
+# Installing Alacritty
 
 # Installing asdf
 cd 

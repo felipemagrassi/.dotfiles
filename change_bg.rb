@@ -11,6 +11,10 @@ current_wallpaper = wallpaper_line.split('/')[-1]
 current_lockscreen_wallpaper = lockscreen_wallpaper_line.split('/')[-1]
 new_wallpaper = wallpapers.sample.split('/')[-1]
 
+while current_wallpaper == new_wallpaper
+  new_wallpaper = wallpapers.sample.split('/')[-1]
+end
+
 puts "Changing wallpaper from #{current_wallpaper} to #{new_wallpaper}"
 
 new_wallpaper_line = wallpaper_line.gsub(current_wallpaper, new_wallpaper)

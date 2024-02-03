@@ -1,19 +1,22 @@
 require 'json'
 
+regolith_settings_path = "#{Dir.home}/.dotfiles/regolith/.config/regolith3/Xresources"
 wallpapers = Dir.glob("#{Dir.home}/.dotfiles/wallpapers/*")
+
+regolith_settings = File.read(regolith_settings_path)
+wallpaper_line = regolith_settings.split("\n").select { |line| line.include? "regolith.wallpaper.file" }[0]
+
+current_wallpaper = wallpaper_line.split('/')[-1]
 new_wallpaper = wallpapers.sample.split('/')[-1]
 
-file = File.read(ARGV[0])
-data_hash = JSON.parse(file)
+puts "Changing wallpaper from #{current_wallpaper} to #{new_wallpaper}"
 
-image = data_hash['profiles']['list']
-        .find { |profile| profile['name'] == 'Ubuntu' }['backgroundImage']
-        .split('\\')
+new_wallpaper_line = wallpaper_line.gsub(current_wallpaper, new_wallpaper)
+new_regolith_settings = regolith_settings.gsub(wallpaper_line, new_wallpaper_line)
 
-new_wallpaper = wallpapers.sample.split('/')[-1] while new_wallpaper == image[-1] || new_wallpaper == 'blank.gif'
-image[-1] = new_wallpaper
+File.open(regolith_settings_path, 'w') { |file| file.write(new_regolith_settings) }
 
-data_hash['profiles']['list']
-  .find { |profile| profile['name'] == 'Ubuntu' }['backgroundImage'] = image.join('\\')
+puts "Refreshing Regolith"
 
-File.write(ARGV[0], JSON.dump(data_hash))
+regolith_cmd = "regolith-look refresh"
+system(regolith_cmd)

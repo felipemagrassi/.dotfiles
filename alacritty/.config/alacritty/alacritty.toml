@@ -1,4 +1,4 @@
-import = ["/home/felipe/.config/alacritty/themes/themes/hyper.toml"]
+import = ["/home/felipe/.config/alacritty/themes/themes/aura.toml"]
 
 [font]
 size = 14
@@ -20,4 +20,4 @@ family = "MesloLGS NF"
 style = "Regular"
 
 [window]
-opacity = 0.9
+opacity = 0.81

@@ -1,8 +1,8 @@
-regolith.wallpaper.file: /home/felipe/.dotfiles/wallpapers/wallpaperflare.com_wallpaper.jpg
-regolith.lockscreen.wallpaper.file: /home/felipe/.dotfiles/wallpapers/wallpaperflare.com_wallpaper.jpg
+regolith.wallpaper.file: /home/felipe/.dotfiles/wallpapers/Ram_Holding_JavaScript_The_Good_Parts-adb242f493ee3485a2cb0faa21bfdce9.png
+regolith.lockscreen.wallpaper.file: /home/felipe/.dotfiles/wallpapers/Ram_Holding_JavaScript_The_Good_Parts-adb242f493ee3485a2cb0faa21bfdce9.png
 regolith.wallpaper.options: scaled
-!regolith.look.path: /usr/share/regolith-look/dracula
 gnome.terminal.font: MesloLGS NF Regular 15
 gnome.wallpaper: /home/felipe/.dotfiles/wallpapers/206355.jpg
 wm.bar.position: top
-regolith.look.path: /usr/share/regolith-look/blackhole
+!regolith.look.path: /usr/share/regolith-look/blackhole
+regolith.look.path: /usr/share/regolith-look/ayu

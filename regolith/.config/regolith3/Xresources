@@ -3,6 +3,7 @@ regolith.lockscreen.wallpaper.file: ~/.dotfiles/wallpapers/52410651-fa95b900-2b1
 regolith.wallpaper.options: stretched
 gnome.terminal.font: MesloLGS NF Regular 15
 gnome.wallpaper: /home/felipe/.dotfiles/wallpapers/206355.jpg
+regolith.sway.unsupported_gpu: true
 wm.bar.position: top
-!regolith.look.path: /usr/share/regolith-look/nord
+!regolith.look.path: /usr/share/regolith-look/dracula
 regolith.look.path: /usr/share/regolith-look/dracula

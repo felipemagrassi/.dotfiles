@@ -1,7 +1,5 @@
 alias rebase='git fetch origin master:master; git rebase master'
 alias lvim='$HOME/.local/bin/lvim'
-alias newbg="ruby $HOME/.dotfiles/change_bg.rb '$HOME/.dotfiles/windows-terminal/setting.json'"
-alias removebg="ruby $HOME/.dotfiles/remove_bg.rb '$HOME/.dotfiles/windows-terminal/setting.json'"
 alias j='z'
 alias f='zi'
 alias g='lazygit'
@@ -11,6 +9,9 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias ls='ls --color=auto'
+
+alias remove-bg='ruby $HOME/.dotfiles/remove_bg.rb'
+alias change-bg='ruby $HOME/.dotfiles/change_bg.rb'
 
 # Git aliases
 alias shipit="git push --set-upstream origin HEAD"

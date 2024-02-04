@@ -139,13 +139,24 @@ return {
     event = "InsertEnter",
     config = function()
       require("copilot").setup({
+        auto_refresh = true,
         suggestion = {
+          enabled = false,
           auto_trigger = true,
         },
         panel = {
           enabled = false
+        },
+        filetypes = {
+          markdown = true
         }
       })
     end,
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup()
+    end
   }
 }

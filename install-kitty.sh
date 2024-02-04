@@ -18,3 +18,8 @@ sudo update-alternatives --config x-terminal-emulator
 
 rm ~/.config/kitty/kitty.conf
 stow kitty
+
+sudo apt-get install ranger 
+stow ranger
+
+cargo install presenterm

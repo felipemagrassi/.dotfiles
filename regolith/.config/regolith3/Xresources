@@ -1,9 +1,9 @@
-regolith.wallpaper.file: ~/.dotfiles/wallpapers/Miyamizu_Mitsuha_On_Ownership_And_Borrowing-1182faac02a47e44507c66fb3cc42e6e.jpg
-regolith.lockscreen.wallpaper.file: ~/.dotfiles/wallpapers/Miyamizu_Mitsuha_On_Ownership_And_Borrowing-1182faac02a47e44507c66fb3cc42e6e.jpg
+regolith.wallpaper.file: ~/.dotfiles/wallpapers/Kobayashi_Reading_Computer_Systems.png
+regolith.lockscreen.wallpaper.file: ~/.dotfiles/wallpapers/Kobayashi_Reading_Computer_Systems.png
 regolith.lockscreen.wallpaper.options: none
 regolith.wallpaper.options: scaled
 gnome.terminal.font: MesloLGS NF Regular 15
 gnome.wallpaper: /home/felipe/.dotfiles/wallpapers/206355.jpg
 wm.bar.position: top
 !regolith.look.path: /usr/share/regolith-look/ayu
-regolith.look.path: /usr/share/regolith-look/ayu
+regolith.look.path: /usr/share/regolith-look/dracula

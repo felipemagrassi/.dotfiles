@@ -1,9 +1,8 @@
-regolith.wallpaper.file: ~/.dotfiles/wallpapers/52410651-fa95b900-2b13-11e9-970e-eff9afd83b23.png
-regolith.lockscreen.wallpaper.file: ~/.dotfiles/wallpapers/52410651-fa95b900-2b13-11e9-970e-eff9afd83b23.png
+regolith.wallpaper.file: ~/.dotfiles/wallpapers/Akko_Kagari_Classic_Shell_Scripting.jpg
+regolith.lockscreen.wallpaper.file: ~/.dotfiles/wallpapers/Akko_Kagari_Classic_Shell_Scripting.jpg
 regolith.wallpaper.options: stretched
 gnome.terminal.font: MesloLGS NF Regular 15
 gnome.wallpaper: /home/felipe/.dotfiles/wallpapers/206355.jpg
-regolith.sway.unsupported_gpu: true
 wm.bar.position: top
 !regolith.look.path: /usr/share/regolith-look/dracula
-regolith.look.path: /usr/share/regolith-look/dracula
+regolith.look.path: /usr/share/regolith-look/ayu

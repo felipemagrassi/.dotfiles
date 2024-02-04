@@ -3,6 +3,7 @@ sudo apt-get install -y \
   stow \
   zsh \
   vim \
+  gimp \
   xsel \
   tmux \
   xclip \
@@ -24,7 +25,7 @@ sudo tee /etc/apt/sources.list.d/regolith.list
 
 sudo apt update
 sudo apt install regolith-desktop regolith-session-flashback regolith-look-lascaille regolith-look-dracula
-sudo apt install regolith-desktop regolith-session-sway regolith-look-nord
+sudo apt install regolith-desktop regolith-session-sway regolith-look-nord regolith-look-ayu
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh

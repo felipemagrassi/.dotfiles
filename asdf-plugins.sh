@@ -16,8 +16,14 @@ do
     "nodejs")
       echo "Installing NodeJS"
       asdf plugin add nodejs
-      asdf global nodejs latest
       asdf install nodejs latest
+      asdf global nodejs latest
+      ;;
+    "golang")
+      echo "Installing Go"
+      asdf plugin add golang
+      asdf install golang latest
+      asdf global golang latest
       ;;
   esac
 done

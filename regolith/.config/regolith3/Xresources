@@ -1,8 +1,9 @@
 regolith.wallpaper.file: ~/.dotfiles/wallpapers/Akko_Kagari_Classic_Shell_Scripting.jpg
 regolith.lockscreen.wallpaper.file: ~/.dotfiles/wallpapers/Akko_Kagari_Classic_Shell_Scripting.jpg
+regolith.lockscreen.wallpaper.options: none
 regolith.wallpaper.options: stretched
 gnome.terminal.font: MesloLGS NF Regular 15
 gnome.wallpaper: /home/felipe/.dotfiles/wallpapers/206355.jpg
 wm.bar.position: top
-!regolith.look.path: /usr/share/regolith-look/dracula
+!regolith.look.path: /usr/share/regolith-look/ayu
 regolith.look.path: /usr/share/regolith-look/ayu

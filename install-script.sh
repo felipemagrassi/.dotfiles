@@ -3,6 +3,7 @@ sudo apt-get install -y \
   stow \
   zsh \
   vim \
+  xsel \
   tmux \
   xclip \
   git \

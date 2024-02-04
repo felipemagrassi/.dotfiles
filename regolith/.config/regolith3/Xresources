@@ -1,8 +1,8 @@
-regolith.wallpaper.file: /home/felipe/.dotfiles/wallpapers/blank.gif
-regolith.lockscreen.wallpaper.file: /home/felipe/.dotfiles/wallpapers/Watashi_Design_Patterns-d77782c7864e67afa1ad3219951c96c8.jpg
+regolith.wallpaper.file: ~/.dotfiles/wallpapers/52410651-fa95b900-2b13-11e9-970e-eff9afd83b23.png
+regolith.lockscreen.wallpaper.file: ~/.dotfiles/wallpapers/52410651-fa95b900-2b13-11e9-970e-eff9afd83b23.png
 regolith.wallpaper.options: stretched
 gnome.terminal.font: MesloLGS NF Regular 15
 gnome.wallpaper: /home/felipe/.dotfiles/wallpapers/206355.jpg
 wm.bar.position: top
-!regolith.look.path: /usr/share/regolith-look/blackhole
-regolith.look.path: /usr/share/regolith-look/ayu
+!regolith.look.path: /usr/share/regolith-look/nord
+regolith.look.path: /usr/share/regolith-look/dracula

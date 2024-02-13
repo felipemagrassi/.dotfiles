@@ -72,3 +72,4 @@ yarn-debug.log*
 nvim/.config/nvim/lazy-lock.json
 **/lazy-lock.json
 mpv/.config/mpv/shaders/cache/*
+mpv/.config/mpv/watch_later/

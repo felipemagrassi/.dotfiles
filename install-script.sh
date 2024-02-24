@@ -6,6 +6,7 @@ sudo apt-get install -y \
   gimp \
   xsel \
   tmux \
+  protobuf-compiler \
   xclip \
   git \
   curl \

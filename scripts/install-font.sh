@@ -1,6 +1,4 @@
 echo "Installing Fonts"
-cd ~/.dotfiles/fonts
-cp * ~/.fonts
+cp ~/.dotfiles/fonts/* ~/.local/share/fonts
 fc-cache -fv
-cd
 echo "Done installing fonts"

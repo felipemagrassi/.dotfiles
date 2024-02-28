@@ -32,7 +32,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 mkdir ~/.local/share/fonts -p
-cp fonts/Meslo* ~/.local/share/fonts
+cp fonts/* ~/.local/share/fonts
 
 fc-cache -f -v
 

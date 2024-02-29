@@ -5,6 +5,7 @@ sudo apt-get install -y \
   vim \
   gimp \
   xsel \
+  libpq-dev \
   tmux \
   protobuf-compiler \
   xclip \
@@ -26,7 +27,8 @@ sudo tee /etc/apt/sources.list.d/regolith.list
 
 sudo apt update
 sudo apt install regolith-desktop regolith-session-flashback regolith-look-lascaille regolith-look-dracula
-sudo apt install regolith-desktop regolith-session-sway regolith-look-nord regolith-look-ayu
+sudo apt install regolith-desktop regolith-session-sway regolith-look-nord regolith-look-ayu dunst
+sudo apt purge regolith-rofication
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -48,6 +50,8 @@ stow mpv
 
 # Installing asdf
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1
+
+cargo install ripgrep
 
 rm -rf ~/.config/regolith 
 cd .dotfiles

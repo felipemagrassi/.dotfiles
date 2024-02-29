@@ -4,12 +4,12 @@
 -- See the kickstart.nvim README for more information
 vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
 
-vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
-vim.keymap.set('n', '<leader>Y', [["+Y]])
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Yank to clipboard' })
+vim.keymap.set('n', '<leader>Y', [["+Y]], { desc = 'Yank to clipboard' })
 vim.keymap.set('i', '<C-c>', '<Esc>')
 vim.keymap.set('n', '<leader>rw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set('n', '<leader>jc', '<cmd>:e ~/.config/nvim/init.lua<cr>', { desc = 'Jump to config' })
-vim.keymap.set('n', '<leader>msi', "<cmd>:%s/^/'/c | %s/$/',/c<cr>", { desc = 'Add quotes and commas' })
+vim.keymap.set('n', '<leader>mq', "<cmd>:%s/^/'/c | %s/$/',/c<cr>", { desc = 'Add quotes and commas' })
 vim.opt.spell = false
 vim.opt.spelllang = 'pt_br'
 
@@ -60,7 +60,7 @@ return {
       { '<leader>mp', ':MarkdownPreview<cr>', {
         noremap = true,
         silent = true,
-        desc = 'markdown preview',
+        desc = 'Markdown Preview',
       } },
     },
     ft = 'markdown',

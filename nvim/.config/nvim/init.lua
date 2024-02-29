@@ -283,6 +283,9 @@ require('lazy').setup {
         ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+        ['<leader>j'] = { name = '[J]ump', _ = 'which_key_ignore' },
+        ['<leader>t'] = { name = '[T]est', _ = 'which_key_ignore' },
+        ['<leader>m'] = { name = '[M]agestic Scripts', _ = 'which_key_ignore' },
       }
     end,
   },
@@ -351,7 +354,11 @@ require('lazy').setup {
             i = { ['<c-enter>'] = 'to_fuzzy_refine' },
           },
         },
-        pickers = {},
+        pickers = {
+          colorscheme = {
+            enabled_preview = true,
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -381,7 +388,7 @@ require('lazy').setup {
         -- You can pass additional configuration to telescope to change theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
           winblend = 10,
-          previewer = false,
+          previewer = true,
         })
       end, { desc = '[/] Fuzzily search in current buffer' })
 
@@ -536,7 +543,6 @@ require('lazy').setup {
       local servers = {
         -- clangd = {},
         gopls = {},
-        solargraph = {},
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -586,7 +592,7 @@ require('lazy').setup {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
-        'rubocop',
+        'rubyfmt',
         'gofumpt',
         'goimports',
       })
@@ -614,14 +620,15 @@ require('lazy').setup {
   { -- Autoformat
     'stevearc/conform.nvim',
     opts = {
-      notify_on_error = false,
+      notify_on_error = true,
       format_on_save = {
         timeout_ms = 500,
         lsp_fallback = true,
       },
       formatters_by_ft = {
         lua = { 'stylua' },
-        ruby = { 'rubocop' },
+        ruby = { 'rubyfmt' },
+        eruby = { 'erb-format' },
         go = { 'gofmt', 'goimports' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },

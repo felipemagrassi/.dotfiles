@@ -1,7 +1,7 @@
-regolith.wallpaper.file: ~/.dotfiles/wallpapers/Fujiwara_Chika_Deep_Learning.png
-regolith.lockscreen.wallpaper.file: ~/.dotfiles/wallpapers/Fujiwara_Chika_Deep_Learning.png
+regolith.wallpaper.file: ~/.dotfiles/wallpapers/1707069437080709.jpg
+regolith.lockscreen.wallpaper.file: ~/.dotfiles/wallpapers/1707069437080709.jpg
 regolith.lockscreen.wallpaper.options: none
-regolith.wallpaper.options: none
+regolith.wallpaper.options: scaled
 gnome.terminal.font: MesloLGS NF Regular 15
 gnome.wallpaper: /home/felipe/.dotfiles/wallpapers/206355.jpg
 wm.bar.position: top

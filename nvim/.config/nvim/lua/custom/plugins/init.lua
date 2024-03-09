@@ -10,14 +10,19 @@ vim.keymap.set('i', '<C-c>', '<Esc>')
 vim.keymap.set('n', '<leader>rw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set('n', '<leader>jc', '<cmd>:e ~/.config/nvim/init.lua<cr>', { desc = 'Jump to config' })
 vim.keymap.set('n', '<leader>mq', "<cmd>:%s/^/'/c | %s/$/',/c<cr>", { desc = 'Add quotes and commas' })
-vim.opt.spell = false
-vim.opt.spelllang = 'pt_br'
+vim.opt.spell = true
+vim.opt.spelllang = 'pt_br,en_us'
 
 return {
   {
     'folke/tokyonight.nvim',
     lazy = false,
     priority = 1000,
+  },
+  {
+    'pmizio/typescript-tools.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+    opts = {},
   },
   { 'tpope/vim-dispatch' },
   { 'rebelot/kanagawa.nvim' },

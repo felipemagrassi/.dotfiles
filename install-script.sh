@@ -26,7 +26,7 @@ https://regolith-desktop.org/release-3_0-ubuntu-jammy-amd64 jammy main" | \
 sudo tee /etc/apt/sources.list.d/regolith.list
 
 sudo apt update
-sudo apt install regolith-desktop regolith-session-flashback regolith-look-lascaille regolith-look-dracula
+sudo apt install regolith-desktop regolith-session-flashback regolith-look-lascaille regolith-look-dracula regolith-look-blackhole
 sudo apt install regolith-desktop regolith-session-sway regolith-look-nord regolith-look-ayu dunst
 sudo apt purge regolith-rofication
 

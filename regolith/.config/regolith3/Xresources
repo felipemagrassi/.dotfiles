@@ -5,5 +5,5 @@ regolith.wallpaper.options: scaled
 gnome.terminal.font: MesloLGS NF Regular 15
 gnome.wallpaper: /home/felipe/.dotfiles/wallpapers/206355.jpg
 wm.bar.position: top
-!regolith.look.path: /usr/share/regolith-look/ayu
-regolith.look.path: /usr/share/regolith-look/dracula
+!regolith.look.path: /usr/share/regolith-look/solarized-dark
+regolith.look.path: /usr/share/regolith-look/blackhole

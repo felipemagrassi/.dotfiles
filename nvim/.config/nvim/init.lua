@@ -625,12 +625,12 @@ require('lazy').setup {
     opts = {
       notify_on_error = true,
       format_on_save = {
-        timeout_ms = 500,
+        timeout_ms = 5000,
         lsp_fallback = true,
       },
       formatters_by_ft = {
         lua = { 'stylua' },
-        ruby = { 'rubyfmt' },
+        ruby = { 'rubocop' },
         eruby = { 'erb-format' },
         go = { 'gofmt', 'goimports' },
         -- Conform can also run multiple formatters sequentially

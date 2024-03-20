@@ -316,6 +316,12 @@ require('lazy').setup {
           return vim.fn.executable 'make' == 1
         end,
       },
+      {
+        'nvim-telescope/telescope-live-grep-args.nvim',
+        -- This will not install any breaking changes.
+        -- For major updates, this must be adjusted manually.
+        version = '^1.0.0',
+      },
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires special font.
@@ -343,11 +349,13 @@ require('lazy').setup {
       -- telescope picker. This is really useful to discover what Telescope can
       -- do as well as how to actually do it!
 
+      require('telescope').load_extension 'live_grep_args'
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
+        --
         --
         defaults = {
           file_ignore_patterns = {
@@ -385,6 +393,7 @@ require('lazy').setup {
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<leader>sa', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -595,7 +604,7 @@ require('lazy').setup {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
-        'rubyfmt',
+        'rubocop',
         'gofumpt',
         'goimports',
       })
@@ -631,7 +640,6 @@ require('lazy').setup {
       formatters_by_ft = {
         lua = { 'stylua' },
         ruby = { 'rubocop' },
-        eruby = { 'erb-format' },
         go = { 'gofmt', 'goimports' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },

@@ -49,6 +49,43 @@ return {
     end,
   },
   {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      local harpoon = require 'harpoon'
+      harpoon:setup()
+
+      vim.keymap.set('n', '<leader>a', function()
+        harpoon:list():append()
+      end)
+      vim.keymap.set('n', '<C-e>', function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end)
+
+      vim.keymap.set('n', '<C-h>', function()
+        harpoon:list():select(1)
+      end)
+      vim.keymap.set('n', '<C-j>', function()
+        harpoon:list():select(2)
+      end)
+      vim.keymap.set('n', '<C-k>', function()
+        harpoon:list():select(3)
+      end)
+      vim.keymap.set('n', '<C-l>', function()
+        harpoon:list():select(4)
+      end)
+
+      -- Toggle previous & next buffers stored within Harpoon list
+      vim.keymap.set('n', '<C-S-P>', function()
+        harpoon:list():prev()
+      end)
+      vim.keymap.set('n', '<C-S-N>', function()
+        harpoon:list():next()
+      end)
+    end,
+  },
+  {
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 1000,
@@ -75,24 +112,95 @@ return {
     end,
   },
   {
-    'vim-test/vim-test',
-    config = function()
-      vim.cmd [[ let g:test#strategy = 'neovim' ]]
-      vim.cmd [[ let g:test#neovim#start_normal = 1 ]]
-      vim.cmd [[ let g:test#neovim#term_position = "vert botright" ]]
-      vim.cmd [[ let g:test#javascript#runner = 'jest' ]]
-      vim.cmd [[ let g:test#preserve_screen = 1 ]]
-      vim.cmd [[ let g:test#ruby#rspec#executable = 'bundle exec rspec' ]]
-      vim.cmd [[ let g:test#ruby#rspec#options = '--format documentation --color' ]]
-    end,
-    keys = {
-      { '<leader>tn', ':TestNearest<cr>', desc = 'Test Nearest' },
-      { '<leader>tf', ':TestFile<cr>', desc = 'Test File' },
-      { '<leader>ts', ':TestSuite<cr>', desc = 'Test Suite' },
-      { '<leader>tl', ':TestLast<cr>', desc = 'Test Last' },
-      { '<leader>tv', ':TestVisit<cr>', desc = 'Test Visit' },
+    'nvim-neotest/neotest',
+    dependencies = {
+      'nvim-neotest/nvim-nio',
+      'nvim-lua/plenary.nvim',
+      'nvim-neotest/neotest-go',
+      'nvim-neotest/neotest-jest',
+      'marilari88/neotest-vitest',
+      'olimorris/neotest-rspec',
+      'antoinemadec/FixCursorHold.nvim',
+      'nvim-treesitter/nvim-treesitter',
     },
+    config = function()
+      local neotest_ns = vim.api.nvim_create_namespace 'neotest'
+      vim.diagnostic.config({
+        virtual_text = {
+          format = function(diagnostic)
+            local message = diagnostic.message:gsub('\n', ' '):gsub('\t', ' '):gsub('%s+', ' '):gsub('^%s+', '')
+            return message
+          end,
+        },
+      }, neotest_ns)
+      require('neotest').setup {
+        adapters = {
+          require 'neotest-vitest' {
+            filter_dir = function(name, rel_path, root)
+              return name ~= 'node_modules'
+            end,
+          },
+          require 'neotest-jest' {
+            jestCommand = 'npm test --',
+            jestConfigFile = 'custom.jest.config.ts',
+            env = { CI = true },
+            cwd = function(path)
+              return vim.fn.getcwd()
+            end,
+          },
+          require 'neotest-go' {
+            recursive_run = true,
+            experimental = {
+              test_table = true,
+            },
+            args = { '-v', '-count=1' },
+          },
+          require 'neotest-rspec' {
+            rspec_cmd = function()
+              return vim.tbl_flatten {
+                'bundle',
+                'exec',
+                'rspec',
+              }
+            end,
+          },
+        },
+      }
+
+      vim.keymap.set('n', '<leader>tn', function()
+        require('neotest').run.run()
+      end)
+      vim.keymap.set('n', '<leader>tf', function()
+        require('neotest').run.run(vim.fn.expand '%')
+      end)
+      vim.keymap.set('n', '<leader>ts', function()
+        require('neotest').run.run(vim.fn.getcwd())
+      end)
+      vim.keymap.set('n', '<leader>tp', function()
+        require('neotest').output_panel.toggle()
+        require('neotest').summary.toggle()
+      end)
+    end,
   },
+  -- {
+  --   'vim-test/vim-test',
+  --   config = function()
+  --     vim.cmd [[ let g:test#strategy = 'neovim' ]]
+  --     vim.cmd [[ let g:test#neovim#start_normal = 1 ]]
+  --     vim.cmd [[ let g:test#neovim#term_position = "vert botright" ]]
+  --     vim.cmd [[ let g:test#javascript#runner = 'jest' ]]
+  --     vim.cmd [[ let g:test#preserve_screen = 1 ]]
+  --     vim.cmd [[ let g:test#ruby#rspec#executable = 'bundle exec rspec' ]]
+  --     vim.cmd [[ let g:test#ruby#rspec#options = '--format documentation --color' ]]
+  --   end,
+  --   keys = {
+  --     { '<leader>tn', ':TestNearest<cr>', desc = 'Test Nearest' },
+  --     { '<leader>tf', ':TestFile<cr>', desc = 'Test File' },
+  --     { '<leader>ts', ':TestSuite<cr>', desc = 'Test Suite' },
+  --     { '<leader>tl', ':TestLast<cr>', desc = 'Test Last' },
+  --     { '<leader>tv', ':TestVisit<cr>', desc = 'Test Visit' },
+  --   },
+  -- },
   { 'EdenEast/nightfox.nvim' },
   { 'xiyaowong/transparent.nvim' },
   { 'ellisonleao/gruvbox.nvim' },

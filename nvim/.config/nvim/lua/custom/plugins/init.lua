@@ -127,6 +127,9 @@ return {
     name = 'catppuccin',
     priority = 1000,
     event = 'VimEnter',
+    init = function()
+      vim.cmd.colorscheme 'catppuccin-frappe'
+    end,
     config = function()
       require('catppuccin').setup {
         transparent_background = true,

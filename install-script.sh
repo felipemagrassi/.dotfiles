@@ -52,3 +52,6 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1
 
 cargo install ripgrep
 chsh -s $(which zsh)
+
+sudo apt install thunar -y
+xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search

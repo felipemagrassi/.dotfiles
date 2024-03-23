@@ -4,15 +4,17 @@ regolith.lockscreen.wallpaper.options: none
 regolith.wallpaper.options: scaled
 gnome.terminal.font: MesloLGS NF Regular 15
 gnome.wallpaper: /home/felipe/.dotfiles/wallpapers/206355.jpg
+gnome.icon.theme: Zafiro-Icons-Purple
 wm.bar.position: top
-regolith.look.path: /usr/share/regolith-look/blackhole
-
-## Gap configuration
-wm.gaps.inner.size: 5
+!regolith.look.path: /usr/share/regolith-look/blackhole
 
 ## Border configuration
 wm.window.border.size: 3
-wm.client.focused.color.child_border: #AAD3E9
+i3-wm.gaps.inner.size: 10
+i3-wm.client.focused.color.child_border: #bd93f9
+i3-wm.client.focused.color.indicator: #8be9fd
 
 ## Workspace names
 wm.workspace.01.name: 1:Firefox
+wm.workspace.01.name: 2:Neovim
+regolith.look.path: /usr/share/regolith-look/dracula

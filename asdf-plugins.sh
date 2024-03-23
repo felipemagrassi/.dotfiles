@@ -19,11 +19,6 @@ do
       asdf install nodejs latest
       asdf global nodejs latest
       ;;
-    "golang")
-      echo "Installing Go"
-      asdf plugin add golang
-      asdf install golang latest
-      asdf global golang latest
-      ;;
+    *) echo "usage ./asdf-plugins.sh 'ruby python nodejs'";;
   esac
 done

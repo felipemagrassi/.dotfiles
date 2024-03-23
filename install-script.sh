@@ -51,3 +51,4 @@ git restore .
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1
 
 cargo install ripgrep
+chsh -s $(which zsh)

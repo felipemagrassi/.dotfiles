@@ -30,8 +30,8 @@ sudo apt install regolith-desktop regolith-session-flashback regolith-look-lasca
 sudo apt install regolith-desktop regolith-session-sway regolith-look-nord regolith-look-ayu dunst
 sudo apt purge regolith-rofication
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 mkdir ~/.local/share/fonts -p
 cp fonts/* ~/.local/share/fonts
@@ -44,15 +44,10 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 rm ~/.zshrc
 
-stow zsh
-stow starship
-stow mpv
+stow * --adopt
+git restore .
 
 # Installing asdf
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1
 
 cargo install ripgrep
-
-rm -rf ~/.config/regolith 
-cd .dotfiles
-stow regolith

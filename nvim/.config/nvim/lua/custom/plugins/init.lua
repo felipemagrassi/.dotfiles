@@ -13,11 +13,48 @@ vim.keymap.set('n', '<leader>mq', "<cmd>:%s/^/'/c | %s/$/',/c<cr>", { desc = 'Ad
 vim.opt.spell = true
 vim.opt.spelllang = 'pt_br,en_us'
 
+require('which-key').register {
+  ['<leader>j'] = { name = '[J]ump', _ = 'which_key_ignore' },
+  ['<leader>t'] = { name = '[T]est', _ = 'which_key_ignore' },
+  ['<leader>m'] = { name = '[M]agestic Scripts', _ = 'which_key_ignore' },
+}
+
+require('telescope').setup {
+  defaults = {
+    file_ignore_patterns = {
+      'node_modules',
+    },
+  },
+  pickers = {
+    colorscheme = {
+      enable_preview = true,
+    },
+  },
+}
+
 return {
   {
     'folke/tokyonight.nvim',
     lazy = false,
     priority = 1000,
+  },
+  {
+    'https://github.com/rafamadriz/friendly-snippets',
+  },
+  {
+    'rafamadriz/friendly-snippets',
+    config = function()
+      require('luasnip.loaders.from_vscode').lazy_load()
+    end,
+  },
+  {
+    'nvim-telescope/telescope-live-grep-args.nvim',
+    -- This will not install any breaking changes.
+    -- For major updates, this must be adjusted manually.
+    version = '^1.0.0',
+    config = function()
+      require('telescope').load_extension 'live_grep_args'
+    end,
   },
   {
     'pmizio/typescript-tools.nvim',

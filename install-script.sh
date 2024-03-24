@@ -44,14 +44,22 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 rm ~/.zshrc
 
-stow * --adopt
-git restore .
+stow zsh
+source ~/.zshrc
 
 # Installing asdf
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1
+
+./asdf-plugins.sh nodejs
+./asdf-plugins.sh ruby
 
 cargo install ripgrep
 chsh -s $(which zsh)
 
 sudo apt install thunar -y
 xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
+
+./install-kitty.sh
+./scripts/install-neovim.sh
+./scripts/install-font.sh
+

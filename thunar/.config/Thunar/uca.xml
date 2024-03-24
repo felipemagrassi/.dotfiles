@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
-<action>
-	<icon>vlc</icon>
-	<name>Open MPV Here</name>
-	<unique-id>1529744817695650-1</unique-id>
-	<command>mpv %f</command>
-	<description>Open this folder with MPV</description>
-	<patterns>*</patterns>
-	<directories/>
-</action>
+	<action>
+		<icon>mpv</icon>
+		<name>Open MPV Here</name>
+		<unique-id>1529744817695650-1</unique-id>
+		<command>mpv %f</command>
+		<description>Open this folder with MPV</description>
+		<patterns>*</patterns>
+		<directories/>
+	</action>
+	<action>
+		<icon>kitty</icon>
+		<name>Open Kitty Here</name>
+		<unique-id>1529744817695650-2</unique-id>
+		<command>kitty %f</command>
+		<description>Open this folder with Kitty</description>
+		<patterns>*</patterns>
+		<directories/>
+	</action>
 </actions>

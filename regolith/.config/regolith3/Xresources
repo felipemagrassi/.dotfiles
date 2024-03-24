@@ -1,9 +1,4 @@
-regolith.wallpaper.file: ~/.dotfiles/wallpapers/Miyamizu_Mitsuha_On_Ownership_And_Borrowing-1182faac02a47e44507c66fb3cc42e6e.jpg
-regolith.lockscreen.wallpaper.file: ~/.dotfiles/wallpapers/Miyamizu_Mitsuha_On_Ownership_And_Borrowing-1182faac02a47e44507c66fb3cc42e6e.jpg
-regolith.lockscreen.wallpaper.options: none
-regolith.wallpaper.options: scaled
 gnome.terminal.font: MesloLGS NF Regular 15
-gnome.wallpaper: /home/felipe/.dotfiles/wallpapers/206355.jpg
 wm.bar.position: top
 !regolith.look.path: /usr/share/regolith-look/blackhole
 
@@ -15,3 +10,8 @@ i3-wm.client.focused.color.indicator: #8be9fd
 
 ## Workspace names
 regolith.look.path: /usr/share/regolith-look/dracula
+regolith.wallpaper.file: /home/felipe/.dotfiles/wallpapers/wallhaven-v973e3-compressed.jpg
+regolith.wallpaper.options: scaled
+regolith.lockscreen.wallpaper.file: /home/felipe/.dotfiles/wallpapers/wallhaven-v973e3-compressed.jpg
+regolith.lockscreen.wallpaper.options: scaled
+gnome.wallpaper: /home/felipe/.dotfiles/wallpapers/wallhaven-v973e3-compressed.jpg

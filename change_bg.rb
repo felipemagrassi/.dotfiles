@@ -1,36 +1,83 @@
-require 'json'
+REGOLITH_SETTINGS_PATH = "#{Dir.home}/.dotfiles/regolith/.config/regolith3/Xresources"
+WALLPAPERS = Dir.glob("#{Dir.home}/.dotfiles/wallpapers/*")
 
-regolith_settings_path = "#{Dir.home}/.dotfiles/regolith/.config/regolith3/Xresources"
-wallpapers = Dir.glob("#{Dir.home}/.dotfiles/wallpapers/*")
+WALLPAPER_LINE = "regolith.wallpaper.file"
+WALLPAPER_OPTION = "regolith.wallpaper.options"
+LOCKSCREEN_WALLPAPER_LINE = "regolith.lockscreen.wallpaper.file"
+LOCKSREEN_WALLPAPER_OPTION = "regolith.lockscreen.wallpaper.options"
+GNOME_WALLPAPER_LINE = "gnome.wallpaper"
 
-regolith_settings = File.read(regolith_settings_path)
+USED_OPTION = "scaled"
 
-wallpaper_line = regolith_settings.split("\n").select { |line| line.include? "regolith.wallpaper.file" }[0]
-lockscreen_wallpaper_line = regolith_settings.split("\n").select { |line| line.include? "regolith.lockscreen.wallpaper.file" }[0]
-wallpaper_option = regolith_settings.split("\n").select { |line| line.include? "regolith.wallpaper.options" }[0]
+def current_wallpaper
+  regolith_settings = File.read(REGOLITH_SETTINGS_PATH)
+  wallpaper_line = regolith_settings.split("\n").select { |line| line.include?("regolith.wallpaper.file") }[0]
 
-current_wallpaper = wallpaper_line.split('/')[-1]
-current_lockscreen_wallpaper = lockscreen_wallpaper_line.split('/')[-1]
+  return nil if wallpaper_line.nil?
 
-new_wallpaper = wallpapers.sample.split('/')[-1]
-
-while current_wallpaper == new_wallpaper
-  new_wallpaper = wallpapers.sample.split('/')[-1]
+  @current_wallpaper ||= wallpaper_line.split("/")[-1]
 end
 
-puts "Changing wallpaper from #{current_wallpaper} to #{new_wallpaper}"
+def new_wallpaper
+  new_wallpaper = WALLPAPERS.sample.split("/")[-1]
 
-new_wallpaper_line = wallpaper_line.gsub(current_wallpaper, new_wallpaper)
-new_lockscreen_wallpaper_line = lockscreen_wallpaper_line.gsub(current_lockscreen_wallpaper, new_wallpaper)
-new_regolith_settings = regolith_settings
-  .gsub(wallpaper_line, new_wallpaper_line)
-  .gsub(lockscreen_wallpaper_line, new_lockscreen_wallpaper_line)
-  .gsub(wallpaper_option, "regolith.wallpaper.options: scaled")
-  
+  while current_wallpaper == new_wallpaper
+    new_wallpaper = WALLPAPERS.sample.split("/")[-1]
+  end
 
-File.open(regolith_settings_path, 'w') { |file| file.write(new_regolith_settings) }
+  new_wallpaper
+end
 
-puts "Refreshing Regolith"
+def add_wallpaper(wallpaper)
+  puts("adding wallpaper")
+  regolith_settings = File.read(REGOLITH_SETTINGS_PATH)
 
-regolith_cmd = "regolith-look refresh"
-system(regolith_cmd)
+  wallpaper_path = "#{Dir.home}/.dotfiles/wallpapers/#{wallpaper}"
+
+  new_settings = regolith_settings
+    .split("\n")
+    .push("#{WALLPAPER_LINE}: #{wallpaper_path}")
+    .push("#{WALLPAPER_OPTION}: #{USED_OPTION}")
+    .push("#{LOCKSCREEN_WALLPAPER_LINE}: #{wallpaper_path}")
+    .push("#{LOCKSREEN_WALLPAPER_OPTION}: #{USED_OPTION}")
+    .push("#{GNOME_WALLPAPER_LINE}: #{wallpaper_path}")
+    .join("\n")
+
+  File.open(REGOLITH_SETTINGS_PATH, "w") { |file| file.write(new_settings) }
+end
+
+def remove_settings
+  puts("Removing settings")
+  regolith_settings = File.read(REGOLITH_SETTINGS_PATH)
+
+  new_settings = regolith_settings
+    .split("\n")
+    .reject { |l| l.include?(WALLPAPER_LINE) }
+    .reject { |l| l.include?(WALLPAPER_OPTION) }
+    .reject { |l| l.include?(LOCKSCREEN_WALLPAPER_LINE) }
+    .reject { |l| l.include?(LOCKSREEN_WALLPAPER_OPTION) }
+    .reject { |l| l.include?(GNOME_WALLPAPER_LINE) }
+    .join("\n")
+
+  File.open(REGOLITH_SETTINGS_PATH, "w") { |file| file.write(new_settings) }
+end
+
+def refresh
+  puts("Refreshing Regolith")
+
+  regolith_cmd = "regolith-look refresh"
+  system(regolith_cmd)
+end
+
+def main
+  new_wallpaper = new_wallpaper()
+
+  puts("Changing wallpaper from #{current_wallpaper} to #{new_wallpaper}")
+
+  remove_settings
+  add_wallpaper(new_wallpaper)
+
+  refresh
+end
+
+main

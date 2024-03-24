@@ -13,6 +13,9 @@ vim.keymap.set('n', '<leader>mq', "<cmd>:%s/^/'/c | %s/$/',/c<cr>", { desc = 'Ad
 vim.opt.spell = true
 vim.opt.spelllang = 'pt_br,en_us'
 
+vim.keymap.set('i', 'jk', '<Esc>')
+vim.keymap.set('n', '<leader>x', '<cmd>:qa!<cr>', { desc = 'Quit' })
+
 require('which-key').register {
   ['<leader>j'] = { name = '[J]ump', _ = 'which_key_ignore' },
   ['<leader>t'] = { name = '[T]est', _ = 'which_key_ignore' },

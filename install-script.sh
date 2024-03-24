@@ -15,7 +15,6 @@ sudo apt-get install -y \
   git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev \
   keychain \
   mpv  \
-  fzf \
   cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 \
   lzma
 
@@ -67,4 +66,7 @@ xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
 ./install-kitty.sh
 ./scripts/install-neovim.sh
 ./scripts/install-font.sh
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 

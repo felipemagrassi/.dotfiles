@@ -146,3 +146,5 @@ if [ -f '/home/felipe/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/felipe/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/felipe/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

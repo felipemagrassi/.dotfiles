@@ -7,7 +7,7 @@ LOCKSCREEN_WALLPAPER_LINE = "regolith.lockscreen.wallpaper.file"
 LOCKSREEN_WALLPAPER_OPTION = "regolith.lockscreen.wallpaper.options"
 GNOME_WALLPAPER_LINE = "gnome.wallpaper"
 
-USED_OPTION = "scaled"
+USED_OPTION = "zoom"
 
 def current_wallpaper
   regolith_settings = File.read(REGOLITH_SETTINGS_PATH)

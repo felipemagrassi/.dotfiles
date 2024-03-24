@@ -27,8 +27,13 @@ sudo tee /etc/apt/sources.list.d/regolith.list
 
 sudo apt update
 sudo apt install regolith-desktop regolith-session-flashback regolith-look-lascaille regolith-look-dracula regolith-look-blackhole
-sudo apt install regolith-desktop regolith-session-sway regolith-look-nord regolith-look-ayu dunst
 sudo apt purge regolith-rofication
+sudo apt install regolith-desktop regolith-session-sway regolith-look-nord regolith-look-ayu dunst
+sudo apt install pulseaudio-module-bluetooth -y
+sudo apt install -y i3xrocks-focused-window-name \
+  i3xrocks-battery i3xrocks-bluetooth i3xrocks-media-player \
+  i3xrocks-temp i3xrocks-volume i3xrocks-weather
+
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 curl https://sh.rustup.rs -sSf | sh -s -- -y

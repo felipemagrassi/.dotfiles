@@ -424,7 +424,7 @@ return {
     priority = 1000,
     event = 'VimEnter',
     init = function()
-      vim.cmd.colorscheme 'catppuccin-frappe'
+      vim.cmd.colorscheme 'kanagawa-dragon'
     end,
     config = function()
       require('catppuccin').setup {

@@ -10,8 +10,5 @@ i3-wm.client.focused.color.indicator: #8be9fd
 
 ## Workspace names
 regolith.look.path: /usr/share/regolith-look/dracula
-regolith.wallpaper.file: /home/felipe/.dotfiles/wallpapers/wallhaven-rrz32q.jpg
-regolith.wallpaper.options: zoom
-regolith.lockscreen.wallpaper.file: /home/felipe/.dotfiles/wallpapers/wallhaven-rrz32q.jpg
-regolith.lockscreen.wallpaper.options: zoom
-gnome.wallpaper: /home/felipe/.dotfiles/wallpapers/wallhaven-rrz32q.jpg
+regolith.wallpaper.options: none
+regolith.lockscreen.wallpaper.options: none

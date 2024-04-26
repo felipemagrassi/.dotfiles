@@ -503,45 +503,45 @@ return {
         },
       }
 
-      vim.keymap.set('n', '<leader>tn', function()
+      vim.keymap.set('n', '<leader>tnn', function()
         require('neotest').run.run()
       end)
-      vim.keymap.set('n', '<leader>tf', function()
+      vim.keymap.set('n', '<leader>tnf', function()
         require('neotest').run.run(vim.fn.expand '%')
       end)
-      vim.keymap.set('n', '<leader>ts', function()
+      vim.keymap.set('n', '<leader>tns', function()
         require('neotest').run.run(vim.fn.getcwd())
       end)
-      vim.keymap.set('n', '<leader>tp', function()
+      vim.keymap.set('n', '<leader>tnp', function()
         require('neotest').output_panel.toggle()
         require('neotest').summary.toggle()
       end)
     end,
   },
-  -- {
-  --   'vim-test/vim-test',
-  --   config = function()
-  --     vim.cmd [[ let g:test#strategy = 'neovim' ]]
-  --     vim.cmd [[ let g:test#neovim#start_normal = 1 ]]
-  --     vim.cmd [[ let g:test#neovim#term_position = "vert botright" ]]
-  --     vim.cmd [[ let g:test#javascript#runner = 'jest' ]]
-  --     vim.cmd [[ let g:test#preserve_screen = 1 ]]
-  --     vim.cmd [[ let g:test#ruby#rspec#executable = 'bundle exec rspec' ]]
-  --     vim.cmd [[ let g:test#ruby#rspec#options = '--format documentation --color' ]]
-  --   end,
-  --   keys = {
-  --     { '<leader>tn', ':TestNearest<cr>', desc = 'Test Nearest' },
-  --     { '<leader>tf', ':TestFile<cr>', desc = 'Test File' },
-  --     { '<leader>ts', ':TestSuite<cr>', desc = 'Test Suite' },
-  --     { '<leader>tl', ':TestLast<cr>', desc = 'Test Last' },
-  --     { '<leader>tv', ':TestVisit<cr>', desc = 'Test Visit' },
-  --   },
-  -- },
+  {
+    'vim-test/vim-test',
+    config = function()
+      vim.cmd [[ let g:test#strategy = 'neovim' ]]
+      vim.cmd [[ let g:test#neovim#start_normal = 1 ]]
+      vim.cmd [[ let g:test#neovim#term_position = "vert botright" ]]
+      vim.cmd [[ let g:test#javascript#runner = 'jest' ]]
+      vim.cmd [[ let g:test#preserve_screen = 1 ]]
+      vim.cmd [[ let g:test#ruby#rspec#executable = 'bundle exec rspec' ]]
+      vim.cmd [[ let g:test#ruby#rspec#options = '--format documentation --color' ]]
+    end,
+    keys = {
+      { '<leader>ttn', ':TestNearest<cr>', desc = 'Test Nearest' },
+      { '<leader>ttf', ':TestFile<cr>', desc = 'Test File' },
+      { '<leader>tts', ':TestSuite<cr>', desc = 'Test Suite' },
+      { '<leader>ttl', ':TestLast<cr>', desc = 'Test Last' },
+      { '<leader>ttv', ':TestVisit<cr>', desc = 'Test Visit' },
+    },
+  },
   { 'EdenEast/nightfox.nvim' },
   { 'xiyaowong/transparent.nvim' },
   { 'ellisonleao/gruvbox.nvim' },
   {
-    'BlackLight/nvim-http',
+    'nicwest/vim-http',
   },
   { 'fatih/vim-go', ft = 'go' },
   {

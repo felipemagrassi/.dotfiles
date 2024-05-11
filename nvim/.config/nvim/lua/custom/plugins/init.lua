@@ -18,7 +18,7 @@ vim.keymap.set('n', '<leader>x', '<cmd>:qa!<cr>', { desc = 'Quit' })
 
 require('which-key').register {
   ['<leader>j'] = { name = '[J]ump', _ = 'which_key_ignore' },
-  ['<leader>t'] = { name = '[T]est', _ = 'which_key_ignore' },
+  ['<leader>f'] = { name = 'Test [F]ile', _ = 'which_key_ignore' },
   ['<leader>m'] = { name = '[M]agestic Scripts', _ = 'which_key_ignore' },
 }
 
@@ -192,19 +192,19 @@ return {
         },
       }
 
-      vim.keymap.set('n', '<leader>tnn', function()
+      vim.keymap.set('n', '<leader>fnn', function()
         require('neotest').run.run()
-      end)
-      vim.keymap.set('n', '<leader>tnf', function()
+      end, { desc = 'Test Nearest' })
+      vim.keymap.set('n', '<leader>fnf', function()
         require('neotest').run.run(vim.fn.expand '%')
-      end)
-      vim.keymap.set('n', '<leader>tns', function()
+      end, { desc = 'Test File' })
+      vim.keymap.set('n', '<leader>fns', function()
         require('neotest').run.run(vim.fn.getcwd())
-      end)
-      vim.keymap.set('n', '<leader>tnp', function()
+      end, { desc = 'Test Suite' })
+      vim.keymap.set('n', '<leader>fnp', function()
         require('neotest').output_panel.toggle()
         require('neotest').summary.toggle()
-      end)
+      end, { desc = 'Toggle Neotest Panel' })
     end,
   },
   {
@@ -219,11 +219,11 @@ return {
       vim.cmd [[ let g:test#ruby#rspec#options = '--format documentation --color' ]]
     end,
     keys = {
-      { '<leader>ttn', ':TestNearest<cr>', desc = 'Test Nearest' },
-      { '<leader>ttf', ':TestFile<cr>', desc = 'Test File' },
-      { '<leader>tts', ':TestSuite<cr>', desc = 'Test Suite' },
-      { '<leader>ttl', ':TestLast<cr>', desc = 'Test Last' },
-      { '<leader>ttv', ':TestVisit<cr>', desc = 'Test Visit' },
+      { '<leader>ftn', ':TestNearest<cr>', { desc = 'Test Nearest' } },
+      { '<leader>ftf', ':TestFile<cr>', { desc = 'Test File' } },
+      { '<leader>fts', ':TestSuite<cr>', { desc = 'Test Suite' } },
+      { '<leader>ftl', ':TestLast<cr>', { desc = 'Test Last' } },
+      { '<leader>ftv', ':TestVisit<cr>', { desc = 'TestVist' } },
     },
   },
   { 'EdenEast/nightfox.nvim' },

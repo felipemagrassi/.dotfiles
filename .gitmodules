@@ -5,3 +5,6 @@
 [submodule "anime"]
 	path = anime
 	url = git@github.com:ThePrimeagen/anime.git
+[submodule "kickstart.nvim"]
+	path = kickstart.nvim
+	url = git@github.com:felipemagrassi/kickstart.nvim.git

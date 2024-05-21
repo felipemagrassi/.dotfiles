@@ -1,6 +1,7 @@
 # things to install
 sudo apt-get install -y \
   stow \
+  lxappearance \ 
   zsh \
   vim \
   gimp \

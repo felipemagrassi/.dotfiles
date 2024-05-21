@@ -8,3 +8,6 @@
 [submodule "kickstart.nvim"]
 	path = kickstart.nvim
 	url = git@github.com:felipemagrassi/kickstart.nvim.git
+[submodule "wallpapers"]
+	path = wallpapers
+	url = https://github.com/felipemagrassi/wallpapers

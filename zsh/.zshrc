@@ -148,3 +148,11 @@ if [ -f '/home/felipe/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/
 if [ -f '/home/felipe/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/felipe/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# pnpm
+export PNPM_HOME="/home/felipe/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

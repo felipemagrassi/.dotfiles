@@ -229,9 +229,22 @@ return {
   { 'EdenEast/nightfox.nvim' },
   { 'xiyaowong/transparent.nvim' },
   { 'ellisonleao/gruvbox.nvim' },
-  {
-    'nicwest/vim-http',
-  },
+	{
+	  "vhyrro/luarocks.nvim",
+	  priority = 1000,
+	  config = true,
+	  opts = {
+	    rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" }
+	  }
+	},
+	{
+	  "rest-nvim/rest.nvim",
+	  ft = "http",
+	  dependencies = { "luarocks.nvim" },
+	  config = function()
+	    require("rest-nvim").setup()
+	  end,
+	},
   { 'fatih/vim-go', ft = 'go' },
   {
     'zbirenbaum/copilot.lua',
@@ -239,9 +252,8 @@ return {
     event = 'InsertEnter',
     config = function()
       require('copilot').setup {
-        auto_refresh = true,
         suggestion = {
-          enabled = false,
+          enabled = true,
         },
         panel = {
           enabled = false,
@@ -250,12 +262,6 @@ return {
           markdown = true,
         },
       }
-    end,
-  },
-  {
-    'zbirenbaum/copilot-cmp',
-    config = function()
-      require('copilot_cmp').setup()
     end,
   },
 }

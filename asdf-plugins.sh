@@ -20,6 +20,12 @@ do
       asdf global nodejs latest
       npm install -g yarn
       ;;
+    "lua")
+      echo "Installing lua"
+      asdf plugin-add lua https://github.com/Stratus3D/asdf-lua.git
+      asdf install lua latest
+      asdf global lua latest
+      ;;
     *) echo "usage ./asdf-plugins.sh 'ruby python nodejs'";;
   esac
 done

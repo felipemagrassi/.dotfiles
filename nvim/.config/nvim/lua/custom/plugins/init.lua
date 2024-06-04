@@ -19,6 +19,7 @@ vim.keymap.set('n', '<leader>x', '<cmd>:qa!<cr>', { desc = 'Quit' })
 require('which-key').register {
   ['<leader>j'] = { name = '[J]ump', _ = 'which_key_ignore' },
   ['<leader>f'] = { name = 'Test [F]ile', _ = 'which_key_ignore' },
+  ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
   ['<leader>m'] = { name = '[M]agestic Scripts', _ = 'which_key_ignore' },
 }
 
@@ -40,6 +41,15 @@ return {
     'folke/tokyonight.nvim',
     lazy = false,
     priority = 1000,
+  },
+  {
+    'tpope/vim-fugitive',
+    keys = {
+      { '<leader>g', [[<cmd>Git<cr>]], { desc = 'Git' } },
+    },
+  },
+  {
+    'tpope/vim-rhubarb',
   },
   {
     'https://github.com/rafamadriz/friendly-snippets',

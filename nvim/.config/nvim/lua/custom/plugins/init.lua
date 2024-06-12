@@ -10,7 +10,7 @@ vim.keymap.set('i', '<C-c>', '<Esc>')
 vim.keymap.set('n', '<leader>rw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set('n', '<leader>jc', '<cmd>:e ~/.config/nvim/init.lua<cr>', { desc = 'Jump to config' })
 vim.keymap.set('n', '<leader>mq', "<cmd>:%s/^/'/c | %s/$/',/c<cr>", { desc = 'Add quotes and commas' })
-vim.opt.spell = true
+vim.opt.spell = false
 vim.opt.spelllang = 'pt_br,en_us'
 
 vim.keymap.set('i', 'jk', '<Esc>')
@@ -239,22 +239,22 @@ return {
   { 'EdenEast/nightfox.nvim' },
   { 'xiyaowong/transparent.nvim' },
   { 'ellisonleao/gruvbox.nvim' },
-	{
-	  "vhyrro/luarocks.nvim",
-	  priority = 1000,
-	  config = true,
-	  opts = {
-	    rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" }
-	  }
-	},
-	{
-	  "rest-nvim/rest.nvim",
-	  ft = "http",
-	  dependencies = { "luarocks.nvim" },
-	  config = function()
-	    require("rest-nvim").setup()
-	  end,
-	},
+  {
+    'vhyrro/luarocks.nvim',
+    priority = 1000,
+    config = true,
+    opts = {
+      rocks = { 'lua-curl', 'nvim-nio', 'mimetypes', 'xml2lua' },
+    },
+  },
+  {
+    'rest-nvim/rest.nvim',
+    ft = 'http',
+    dependencies = { 'luarocks.nvim' },
+    config = function()
+      require('rest-nvim').setup()
+    end,
+  },
   { 'fatih/vim-go', ft = 'go' },
   {
     'zbirenbaum/copilot.lua',

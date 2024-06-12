@@ -1,6 +1,5 @@
 # things to install
-sudo apt-get install -y \
-  stow \
+sudo apt-get install -y zsh stow
   lxappearance \ 
   zsh \
   vim \

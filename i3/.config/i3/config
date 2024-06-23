@@ -193,5 +193,4 @@ bar {
 }
 
 exec_always setxkbmap -layout us
-exec_always xrandr --output DP-0 --rotate left
 exec_always --no-startup-id picom -b -f

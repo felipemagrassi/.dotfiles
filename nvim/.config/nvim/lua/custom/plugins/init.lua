@@ -126,10 +126,21 @@ return {
     priority = 1000,
     event = 'VimEnter',
     config = function()
-      vim.cmd.colorscheme 'catppuccin-latte'
       require('catppuccin').setup {
         transparent_background = false,
       }
+    end,
+  },
+  {
+    'projekt0n/github-nvim-theme',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      require('github-theme').setup {
+        -- ...
+      }
+
+      vim.cmd 'colorscheme github_light'
     end,
   },
   {
@@ -273,6 +284,17 @@ return {
           markdown = true,
         },
       }
+    end,
+  },
+  {
+    'sainnhe/everforest',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      -- Optionally configure and load the colorscheme
+      -- directly inside the plugin declaration.
+      vim.g.everforest_transparent_background = 1
+      vim.g.everforest_enable_italic = true
     end,
   },
 }

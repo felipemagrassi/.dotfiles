@@ -16,7 +16,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # Tools
-alias n='nvim'
+alias n='~/.local/bin/nvim'
 alias g='git'
 alias d='docker'
 alias r='rails'
@@ -26,6 +26,7 @@ alias lzd='lazydocker'
 
 # Git
 alias gcm='git commit -m'
+alias gs='git status'
 alias gcam='git commit -a -m'
 alias gcad='git commit -a --amend'
 alias gl="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'"

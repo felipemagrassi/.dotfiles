@@ -172,5 +172,4 @@ PS1="\[\e]0;\w\a\]$PS1"
 
 shopt -u hostcomplete && complete -o nospace -o bashdefault -o nosort -F _mise mise
 # vim: noet ci pi sts=0 sw=4 ts=4 ft=sh
-
 eval "$(starship init bash)"

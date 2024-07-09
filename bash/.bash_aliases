@@ -34,6 +34,8 @@ alias gct='git commit -m "$(date +"%D %T")"'
 alias shipit="git push --set-upstream origin HEAD"
 alias grs='git reset --soft HEAD~1'
 alias gp='git push --force'
+alias gs='git status'
+alias gd='git diff'
 
 # Compression
 compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }

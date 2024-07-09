@@ -86,12 +86,13 @@
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
 	trustctime = false
 	editor = vim
+	pager = diff-so-fancy | less --tabs=4 -RF
 
 [color]
 
 	# Use colors in Git commands that are capable of colored output when
 	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
-	ui = auto
+	ui = true
 
 [color "branch"]
 
@@ -101,10 +102,13 @@
 
 [color "diff"]
 
-	meta = yellow bold
-	frag = magenta bold # line info
-	old = red # deletions
-	new = green # additions
+	meta = 11
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	func = 146 bold
+	commit = yellow bold
+	whitespace = red reverse
 
 [color "status"]
 
@@ -116,6 +120,7 @@
 
 	# Detect copies as well as renames
 	renames = copies
+	tool = vimdiff
 
 [help]
 
@@ -167,3 +172,10 @@
 
 [init]
 	defaultBranch = main
+[interactive]
+	diffFilter = diff-so-fancy --patch
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22

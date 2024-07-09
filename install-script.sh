@@ -14,6 +14,8 @@ chmod +x ./scripts/mise.sh && ./scripts/mise.sh
 chmod +x ./scripts/lazydocker.sh && ./scripts/lazydocker.sh
 chmod +x ./scripts/lazygit.sh && ./scripts/lazygit.sh
 
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 

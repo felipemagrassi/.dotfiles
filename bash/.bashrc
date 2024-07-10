@@ -171,6 +171,7 @@ color_prompt=yes
 
 PS1=$'\uf0a9 '
 PS1="\[\e]0;\w\a\]$PS1"
+alias nv='~/Downloads/nvim-linux64/bin/nvim'
 
 
 function fgf() {

@@ -914,8 +914,8 @@ require('lazy').setup({
   },
 })
 
-vim.opt.background = 'light'
+vim.opt.background = 'dark'
 vim.opt.termguicolors = true
-vim.cmd.colorscheme 'tokyonight'
+vim.cmd.colorscheme 'kanagawa-dragon'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -657,6 +657,7 @@ require('lazy').setup({
         lua = { 'stylua' },
         ruby = { 'rubocop' },
         go = { 'gofumpt', 'goimports' },
+        sql = { 'sqlfluff', 'sqlfmt' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --

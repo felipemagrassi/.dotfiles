@@ -160,77 +160,77 @@ return {
       vim.fn['mkdp#util#install']()
     end,
   },
-  {
-    'nvim-neotest/neotest',
-    dependencies = {
-      'nvim-neotest/nvim-nio',
-      'nvim-lua/plenary.nvim',
-      'nvim-neotest/neotest-go',
-      'nvim-neotest/neotest-jest',
-      'marilari88/neotest-vitest',
-      'olimorris/neotest-rspec',
-      'antoinemadec/FixCursorHold.nvim',
-      'nvim-treesitter/nvim-treesitter',
-    },
-    config = function()
-      local neotest_ns = vim.api.nvim_create_namespace 'neotest'
-      vim.diagnostic.config({
-        virtual_text = {
-          format = function(diagnostic)
-            local message = diagnostic.message:gsub('\n', ' '):gsub('\t', ' '):gsub('%s+', ' '):gsub('^%s+', '')
-            return message
-          end,
-        },
-      }, neotest_ns)
-      require('neotest').setup {
-        adapters = {
-          require 'neotest-vitest' {
-            filter_dir = function(name, rel_path, root)
-              return name ~= 'node_modules'
-            end,
-          },
-          require 'neotest-jest' {
-            jestCommand = 'npm test --',
-            jestConfigFile = 'custom.jest.config.ts',
-            env = { CI = true },
-            cwd = function(path)
-              return vim.fn.getcwd()
-            end,
-          },
-          require 'neotest-go' {
-            recursive_run = true,
-            experimental = {
-              test_table = true,
-            },
-            args = { '-v', '-count=1' },
-          },
-          require 'neotest-rspec' {
-            rspec_cmd = function()
-              return vim.tbl_flatten {
-                'bundle',
-                'exec',
-                'rspec',
-              }
-            end,
-          },
-        },
-      }
-
-      vim.keymap.set('n', '<leader>fnn', function()
-        require('neotest').run.run()
-      end, { desc = 'Test Nearest' })
-      vim.keymap.set('n', '<leader>fnf', function()
-        require('neotest').run.run(vim.fn.expand '%')
-      end, { desc = 'Test File' })
-      vim.keymap.set('n', '<leader>fns', function()
-        require('neotest').run.run(vim.fn.getcwd())
-      end, { desc = 'Test Suite' })
-      vim.keymap.set('n', '<leader>fnp', function()
-        require('neotest').output_panel.toggle()
-        require('neotest').summary.toggle()
-      end, { desc = 'Toggle Neotest Panel' })
-    end,
-  },
+  -- {
+  --   'nvim-neotest/neotest',
+  --   dependencies = {
+  --     'nvim-neotest/nvim-nio',
+  --     'nvim-lua/plenary.nvim',
+  --     'nvim-neotest/neotest-go',
+  --     'nvim-neotest/neotest-jest',
+  --     'marilari88/neotest-vitest',
+  --     'olimorris/neotest-rspec',
+  --     'antoinemadec/FixCursorHold.nvim',
+  --     'nvim-treesitter/nvim-treesitter',
+  --   },
+  --   config = function()
+  --     local neotest_ns = vim.api.nvim_create_namespace 'neotest'
+  --     vim.diagnostic.config({
+  --       virtual_text = {
+  --         format = function(diagnostic)
+  --           local message = diagnostic.message:gsub('\n', ' '):gsub('\t', ' '):gsub('%s+', ' '):gsub('^%s+', '')
+  --           return message
+  --         end,
+  --       },
+  --     }, neotest_ns)
+  --     require('neotest').setup {
+  --       adapters = {
+  --         require 'neotest-vitest' {
+  --           filter_dir = function(name, rel_path, root)
+  --             return name ~= 'node_modules'
+  --           end,
+  --         },
+  --         require 'neotest-jest' {
+  --           jestCommand = 'npm test --',
+  --           jestConfigFile = 'custom.jest.config.ts',
+  --           env = { CI = true },
+  --           cwd = function(path)
+  --             return vim.fn.getcwd()
+  --           end,
+  --         },
+  --         require 'neotest-go' {
+  --           recursive_run = true,
+  --           experimental = {
+  --             test_table = true,
+  --           },
+  --           args = { '-v', '-count=1' },
+  --         },
+  --         require 'neotest-rspec' {
+  --           rspec_cmd = function()
+  --             return vim.tbl_flatten {
+  --               'bundle',
+  --               'exec',
+  --               'rspec',
+  --             }
+  --           end,
+  --         },
+  --       },
+  --     }
+  --
+  --     vim.keymap.set('n', '<leader>fnn', function()
+  --       require('neotest').run.run()
+  --     end, { desc = 'Test Nearest' })
+  --     vim.keymap.set('n', '<leader>fnf', function()
+  --       require('neotest').run.run(vim.fn.expand '%')
+  --     end, { desc = 'Test File' })
+  --     vim.keymap.set('n', '<leader>fns', function()
+  --       require('neotest').run.run(vim.fn.getcwd())
+  --     end, { desc = 'Test Suite' })
+  --     vim.keymap.set('n', '<leader>fnp', function()
+  --       require('neotest').output_panel.toggle()
+  --       require('neotest').summary.toggle()
+  --     end, { desc = 'Toggle Neotest Panel' })
+  --   end,
+  -- },
   {
     'vim-test/vim-test',
     config = function()

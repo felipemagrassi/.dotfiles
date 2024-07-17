@@ -17,6 +17,8 @@ vim.keymap.set('n', '<leader>x', '<cmd>:qa!<cr>', { desc = 'Quit' })
 
 vim.keymap.set('n', '<leader>sc', require('telescope.builtin').commands, { desc = '[S]earch [C]ommands' })
 
+vim.g.have_nerd_font = true
+
 require('which-key').register {
   ['<leader>j'] = { name = '[J]ump', _ = 'which_key_ignore' },
   ['<C-t>'] = { name = 'Tests', _ = 'which_key_ignore' },

@@ -4,6 +4,8 @@
 -- See the kickstart.nvim README for more information
 vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
 
+vim.opt.textwidth = 80
+
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Yank to clipboard' })
 vim.keymap.set('n', '<leader>Y', [["+Y]], { desc = 'Yank to clipboard' })
 vim.keymap.set('i', '<C-c>', '<Esc>')

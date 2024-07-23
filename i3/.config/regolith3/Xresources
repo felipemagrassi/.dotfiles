@@ -1,0 +1,8 @@
+regolith.wallpaper.file: /home/felipe/.dotfiles/wallpapers/wallhaven-v973e3.png
+!regolith.look.path: /usr/share/regolith-look/nord
+regolith.look.path: /usr/share/regolith-look/dracula
+gnome.terminal.font: MesloLGS NF Regular 14
+gnome.wallpaper: /home/felipe/.dotfiles/wallpapers/wallhaven-ex3m8k.png
+gnome.terminal.background-transparency-percent: 10
+gnome.terminal.use-transparent-background: true
+wm.bar.position: top

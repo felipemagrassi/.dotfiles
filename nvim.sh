@@ -1,1 +1,1 @@
-ln -s kickstart.nvim ~/.config/nvim
+ln -s ~/.dotfiles/kickstart.nvim ~/.config/nvim

@@ -180,3 +180,7 @@
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
+[webflyx]
+	ceo = ThePrimeagen
+	cto = TheLaneagen
+	valuation = mid

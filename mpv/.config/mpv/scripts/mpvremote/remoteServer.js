@@ -1,1 +1,0 @@
-/home/felipe/.asdf/installs/nodejs/21.6.1/lib/node_modules/mpv-remote/remoteServer.js

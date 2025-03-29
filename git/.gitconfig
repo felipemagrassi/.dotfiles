@@ -1,25 +1,25 @@
 [help]
-  autocorrect=1
+    autocorrect=1
 [color]
-  ui=auto
+    ui=auto
 [user]
-	email=felipe.1magrassi@gmail.com
-	name=felipe magrassi
-	signinkey=F0ADADAED06C0081
+    email=felipe.1magrassi@gmail.com
+    name=felipe magrassi
+    signinkey=F0ADADAED06C0081
 [init]
-	defaultBranch=main
+    defaultBranch=main
 [core]
-  autocrlf = input
-	editor=nvim
+    autocrlf = input
+    editor=vim
 [pull]
-	rebase=false
+    rebase=false
 [push]
-  default=current
+    default=current
 [status]
-  branch=1
-  status=1
+    branch=1
+    status=1
 [commit]
-  gpgsign=true
-  verbose=true
+    gpgsign=true
+    verbose=true
 [format]
-	pretty = %C(auto)%h%Creset -%C(auto)%d%Creset %s %C(blue)<%an> %Cgreen(%cr)%Creset
+    pretty = %C(auto)%h%Creset -%C(auto)%d%Creset %s %C(blue)<%an> %Cgreen(%cr)%Creset

@@ -13,13 +13,18 @@ plugins=(
 )
 
 # Aliases
-source ~/.alises 
-source ~/.alises_private
+source ~/.aliases 
+touch ~/.aliases_private && source ~/.aliases_private
 # Env
 source ~/.exports
 # Functions
 source ~/.functions
-source ~/.functions_private
+touch ~/.functions_private && source ~/.functions_private
 # Private config
-source ~/.privaterc
+touch ~/.privaterc && source ~/.privaterc
+
+# dircolors.
+ if [ -x "$(command -v dircolors)" ]; then
+     eval "$(dircolors -b ~/.dircolors)"
+ fi
 source $ZSH/oh-my-zsh.sh

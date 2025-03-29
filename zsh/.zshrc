@@ -8,6 +8,8 @@ plugins=(
     git 
     zsh-syntax-highlighting 
     zsh-autosuggestions
+    zsh-history-substring-search
+    z
 )
 
 # Aliases
@@ -22,7 +24,9 @@ touch ~/.functions_private && source ~/.functions_private
 touch ~/.privaterc && source ~/.privaterc
 
 # dircolors.
- if [ -x "$(command -v dircolors)" ]; then
-     eval "$(dircolors -b ~/.dircolors)"
- fi
+if [ -x "$(command -v dircolors)" ]; then
+ eval "$(dircolors -b ~/.dircolors)"
+fi
+
 source $ZSH/oh-my-zsh.sh
+eval "$(starship init zsh)"

@@ -7,6 +7,13 @@ export EDITOR="vim"
 # Default Pager.
 export PAGER="less"
 
+# GPG
+export GPG_TTY=$(tty)
+
+# Volta
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
 # Less
 export LESS="--RAW-CONTROL-CHARS"
 export LESS_TERMCAP_mb=$'\e[1;31m' # Start blinking
@@ -21,3 +28,7 @@ export LESS_TERMCAP_ue=$'\e[0m' # End underline
 export FZF_DEFAULT_OPTS=" \
     --color=fg:#c0c5ce,bg:#212121,hl:#808080,fg+:#e6e6e6,bg+:#3b3b3b,hl+:#f7c662 \
     --color=info:#f7c662,prompt:#6699cc,pointer:#a6bc69,marker:#a6bc69,spinner:#f7c662,header:#6699cc"
+
+# PATH
+
+export PATH=$PATH:/usr/local/go/bin

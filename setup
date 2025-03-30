@@ -8,7 +8,7 @@ if [ ! command -v nvim &> /dev/null ]; then
 fi
 
 sudo apt update
-sudo apt-get install -y zsh curl git bat make gcc ripgrep unzip git xclip neovim build-essential libreadline-dev unzip lua5.4 luarocks jq
+sudo apt-get install -y zsh curl git bat make gcc ripgrep unzip git xclip neovim build-essential libreadline-dev unzip lua5.4 luarocks jq mpv
 
 # Oh my zsh
 ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}

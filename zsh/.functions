@@ -30,3 +30,22 @@ blue)<%an>%Creset" "$@" | \
         --bind="enter:execute:$view_commit | less -R" \
         --bind="alt-y:execute:$commit_hash | xclip -selection clipboard"
 }
+
+# install fonts
+install_font() {
+    local FONT_DIR="$HOME/.local/share/fonts"
+    mkdir -p "$FONT_DIR"
+
+    for font in "$@"; do 
+    if [ -f "$font" ]; then
+        echo "Installing: $font"
+        cp "$font" "$FONT_DIR/"
+    else
+        echo "file not found $font"
+    fi
+    done
+
+    echo "updating font cache"
+    fc-cache -f "$FONT_DIR"
+    echo "Done!"
+}

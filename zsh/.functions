@@ -31,7 +31,7 @@ blue)<%an>%Creset" "$@" | \
         --bind="alt-y:execute:$commit_hash | xclip -selection clipboard"
 }
 
-# install fonts
+# install fonts multiple fonts
 install_font() {
     local FONT_DIR="$HOME/.local/share/fonts"
     mkdir -p "$FONT_DIR"
@@ -49,3 +49,10 @@ install_font() {
     fc-cache -f "$FONT_DIR"
     echo "Done!"
 }
+
+# python monitor script for changes
+
+python_monitor() {
+    ls "$1" | entr -cs "python3 $1"
+}
+

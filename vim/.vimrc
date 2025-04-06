@@ -95,9 +95,14 @@ nmap <Leader>sb :setlocal spell! spelllang=pt_br<CR>
 " Automatically correct spell with first suggestion
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 au FileType yaml  setlocal tabstop=2 shiftwidth=2 expandtab
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => OPEN
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <Leader>ot :e ~/todo.txt<CR>
+nmap <Leader>oc :e ~/.dotfiles/vim/.vimrc<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Theme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 set background=dark
 syntax enable

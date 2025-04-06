@@ -10,6 +10,7 @@ plugins=(
     zsh-autosuggestions
     zsh-history-substring-search
     z
+    docker
 )
 
 # Aliases

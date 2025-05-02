@@ -50,9 +50,24 @@ install_font() {
     echo "Done!"
 }
 
-# python monitor script for changes
+# monitor script for changes
+function monitor() {
+    local target="$1"
+    shift
+    local cmd="$@"
 
-python_monitor() {
-    ls "$1" | entr -cs "python3 $1"
+    if [[ -z "$target" || -z "$cmd" ]]; then
+        echo "Usage: monitor <file_or_directory> <command_to_run>"
+        return 1
+    fi
+
+    if [[ -f "$target" ]]; then
+        echo "$target" | entr -cs "$cmd"
+    elif [[ -d "$target" ]]; then
+        find "$target" -type f | entr -cs "$cmd"
+    else
+        echo "Error: $target is not a valid file or directory."
+        return 1
+    fi
 }
 

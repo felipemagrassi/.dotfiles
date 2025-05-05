@@ -18,9 +18,9 @@ type Message struct {
 }
 
 type Payload struct {
-	Model      string    `json:"model"`
-	Temperature float64  `json:"temperature"`
-	Messages   []Message `json:"messages"`
+	Model       string    `json:"model"`
+	Temperature float64   `json:"temperature"`
+	Messages    []Message `json:"messages"`
 }
 
 type Choice struct {
@@ -54,7 +54,7 @@ func buildPrompt(diff, commitType, language string) string {
 
 func sendToAI(prompt, model string) (string, error) {
 	payload := Payload{
-		Model:      model,
+		Model:       model,
 		Temperature: 0.3,
 		Messages: []Message{{
 			Role:    "user",
@@ -67,7 +67,7 @@ func sendToAI(prompt, model string) (string, error) {
 		return "", err
 	}
 
-	resp, err := http.Post("http://localhost:8080/v1/chat/completions", "application/json", bytes.NewBuffer(data))
+	resp, err := http.Post("http://localhost:8081/v1/chat/completions", "application/json", bytes.NewBuffer(data))
 	if err != nil {
 		return "", err
 	}
@@ -94,7 +94,7 @@ func sendToAI(prompt, model string) (string, error) {
 func main() {
 	commitType := flag.String("commit-type", "", "Conventional commit type (e.g., fix, feat)")
 	language := flag.String("language", "English", "Language for commit message")
-	model := flag.String("model", "qwen3-8b", "Model to use")
+	model := flag.String("model", "mistral-7b-instruct-v0.3", "Model to use")
 	dryRun := flag.Bool("dry-run", false, "Only print the commit message, don't commit")
 	flag.Parse()
 
@@ -127,4 +127,3 @@ func main() {
 		fmt.Println("✅ Commit created.")
 	}
 }
-

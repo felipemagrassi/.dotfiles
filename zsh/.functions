@@ -56,7 +56,7 @@ function ai_commit() {
     return 1
   fi
 
-  commit-ai "$@"
+  ~/.dotfiles/scripts/ai_commit/ai-commit "$@"
 }
 
 # monitor script for changes

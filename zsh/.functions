@@ -50,6 +50,15 @@ install_font() {
     echo "Done!"
 }
 
+function ai_commit() {
+  if [[ -z $(git diff --cached) ]]; then
+    echo "❌ Nenhuma mudança staged para commitar."
+    return 1
+  fi
+
+  commit-ai "$@"
+}
+
 # monitor script for changes
 function monitor() {
     local target="$1"

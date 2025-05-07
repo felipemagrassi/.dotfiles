@@ -14,7 +14,7 @@ import (
 
 const (
 	ENDPOINT = "http://192.168.68.114:8081/v1/chat/completions"
-	MODEL    = "gwen3-8b"
+	MODEL    = "mistral-7b-instruct-v0.3"
 )
 
 type Message struct {
@@ -179,7 +179,7 @@ func main() {
 	dryRun := flag.Bool("dry-run", false, "Only print the commit message, don't commit")
 	emojiEnabled := flag.Bool("emoji", false, "Prefix the commit message with an emoji")
 	numChoices := flag.Int("choices", 3, "Number of commit message suggestions to choose from")
-	userSuggestion := flag.String("user-suggestion", nil, "User suggestion if there are any")
+	userSuggestion := flag.String("user-suggestion", "", "User suggestion if there are any")
 	flag.Parse()
 
 	diff, err := getStagedDiff()

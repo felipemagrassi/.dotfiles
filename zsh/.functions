@@ -59,7 +59,11 @@ function ai_commit() {
   local user_suggestion="$*"
 
   go run ~/.dotfiles/scripts/ai_commit/main.go --user-suggestion "$user_suggestion"
-  }
+}
+
+function xet() {
+    go run ~/.dotfiles/scripts/chat/main.go
+}
 
 # monitor script for changes
 function monitor() {

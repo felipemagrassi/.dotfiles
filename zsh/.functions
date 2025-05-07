@@ -56,8 +56,10 @@ function ai_commit() {
     return 1
   fi
 
-  go run ~/.dotfiles/scripts/ai_commit/main.go "$@"
-}
+  local user_suggestion="$*"
+
+  go run ~/.dotfiles/scripts/ai_commit/main.go --user-suggestion "$user_suggestion"
+  }
 
 # monitor script for changes
 function monitor() {

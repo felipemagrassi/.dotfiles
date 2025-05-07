@@ -12,7 +12,10 @@ import (
 	"strings"
 )
 
-const ENDPOINT = "http://192.168.68.114:8081/v1/chat/completions"
+const (
+	ENDPOINT = "http://192.168.68.114:8081/v1/chat/completions"
+	MODEL    = "gwen3-8b"
+)
 
 type Message struct {
 	Role    string `json:"role"`
@@ -71,7 +74,7 @@ func getStagedDiff() (string, error) {
 	return string(output), nil
 }
 
-func buildPrompt(diff, commitType, language string, maxLength int) string {
+func buildPrompt(diff, userSuggestion, commitType, language string, maxLength int) string {
 	descriptionBlock, _ := json.MarshalIndent(commitTypeDescriptions, "", "  ")
 
 	promptParts := []string{
@@ -79,6 +82,7 @@ func buildPrompt(diff, commitType, language string, maxLength int) string {
 		fmt.Sprintf("Message language: %s", language),
 		fmt.Sprintf("Commit message must be a maximum of %d characters.", maxLength),
 		"Exclude anything unnecessary such as translation. Your entire response will be passed directly into git commit.",
+		fmt.Sprintf("Use this user suggestion as the main source of information: %s", userSuggestion),
 	}
 
 	if commitType != "" {
@@ -170,11 +174,12 @@ func addEmojiToMessage(message, commitType string, emojiEnabled bool) string {
 func main() {
 	commitType := flag.String("commit-type", "feat", "Conventional commit type (e.g., fix, feat)")
 	language := flag.String("language", "English", "Language for commit message")
-	model := flag.String("model", "mistral-7b-instruct-v0.3", "Model to use")
+	model := flag.String("model", MODEL, "Model to use")
 	maxLength := flag.Int("max-length", 72, "Maximum commit message length")
 	dryRun := flag.Bool("dry-run", false, "Only print the commit message, don't commit")
 	emojiEnabled := flag.Bool("emoji", false, "Prefix the commit message with an emoji")
 	numChoices := flag.Int("choices", 3, "Number of commit message suggestions to choose from")
+	userSuggestion := flag.String("user-suggestion", nil, "User suggestion if there are any")
 	flag.Parse()
 
 	diff, err := getStagedDiff()
@@ -183,7 +188,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	prompt := buildPrompt(diff, *commitType, *language, *maxLength)
+	prompt := buildPrompt(diff, *userSuggestion, *commitType, *language, *maxLength)
 	messages, err := sendToAI(prompt, *model, *numChoices)
 	if err != nil {
 		fmt.Println("Error sending to AI:", err)

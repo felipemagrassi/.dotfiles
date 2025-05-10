@@ -33,3 +33,8 @@ source $ZSH/oh-my-zsh.sh
 eval "$(starship init zsh)"
 
 . "$HOME/.local/bin/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/felipe/.lmstudio/bin"
+# End of LM Studio CLI section
+

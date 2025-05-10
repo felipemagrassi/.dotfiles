@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-const endpoint = "http://192.168.68.114:8081/v1/chat/completions"
+const endpoint = "http://192.168.68.114:1234/v1/chat/completions"
 const model = "mistral-7b-instruct-v0.3"
 
 type Message struct {

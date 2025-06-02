@@ -21,3 +21,5 @@
     verbose=true
 [format]
     pretty = %C(auto)%h%Creset -%C(auto)%d%Creset %s %C(blue)<%an> %Cgreen(%cr)%Creset
+[safe]
+	directory = /opt/code-server/data

@@ -37,5 +37,8 @@ quit-after-last-window-closed = true
 window-new-tab-position = end
 window-save-state = never
 
+font-family = "JetBrainsMonoNL Nerd Font Mono"
+font-size = 17
+
 # window-colorspace = srgb
 window-colorspace = display-p3

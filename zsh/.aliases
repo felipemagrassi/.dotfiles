@@ -1,5 +1,4 @@
 alias c='clear'
-alias cat='batcat'
 alias python='python3'
 alias rmf='rm -rf'
 alias p='ps axo pid,user,pcpu,comm'

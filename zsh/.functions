@@ -1,0 +1,88 @@
+# Print readme
+readme() {
+    for readme in {readme,README}.{md,MD,markdown,mkd,txt,TXT}; do
+        if [[ -x "$(command -v glow)" ]] && [[ -f "$readme" ]]; then
+            mdv "$readme"
+        elif [[ -f "$readme" ]]; then
+            cat "$readme"
+        fi
+    done
+}
+
+# Show ip
+ip-address() {
+    curl -s -H "Accept: application/json" "https://ipinfo.io/${1:-}" | jq 
+"del(.loc, .postal, .readme)" || \
+    curl -s -H "Accept: application/json" "https://am.i.mullvad.net" | jq 
+"del(.longitude, .latitude, .mullvad_exit_ip, .blacklisted)"
+}
+
+# Commit browser
+fshow() {
+    local commit_hash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
+    local view_commit="$commit_hash | xargs -I % sh -c 'git show --color=always 
+% | diff-so-fancy'"
+    git log --color=always \
+        --format="%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold 
+blue)<%an>%Creset" "$@" | \
+    fzf --no-sort --tiebreak=index --no-multi --reverse --ansi \
+        --header="enter to view, alt-y to copy hash" --preview="$view_commit" \
+        --bind="enter:execute:$view_commit | less -R" \
+        --bind="alt-y:execute:$commit_hash | xclip -selection clipboard"
+}
+
+# install fonts multiple fonts
+install_font() {
+    local FONT_DIR="$HOME/.local/share/fonts"
+    mkdir -p "$FONT_DIR"
+
+    for font in "$@"; do 
+    if [ -f "$font" ]; then
+        echo "Installing: $font"
+        cp "$font" "$FONT_DIR/"
+    else
+        echo "file not found $font"
+    fi
+    done
+
+    echo "updating font cache"
+    fc-cache -f "$FONT_DIR"
+    echo "Done!"
+}
+
+function ai_commit() {
+  if [[ -z $(git diff --cached) ]]; then
+    echo "❌ Nenhuma mudança staged para commitar."
+    return 1
+  fi
+
+  local user_suggestion="$*"
+
+  go run ~/.dotfiles/scripts/ai_commit/main.go --user-suggestion "$user_suggestion"
+}
+
+function xet() {
+    go run ~/.dotfiles/scripts/chat/main.go
+}
+
+# monitor script for changes
+function monitor() {
+    local target="$1"
+    shift
+    local cmd="$@"
+
+    if [[ -z "$target" || -z "$cmd" ]]; then
+        echo "Usage: monitor <file_or_directory> <command_to_run>"
+        return 1
+    fi
+
+    if [[ -f "$target" ]]; then
+        echo "$target" | entr -cs "$cmd"
+    elif [[ -d "$target" ]]; then
+        find "$target" -type f | entr -cs "$cmd"
+    else
+        echo "Error: $target is not a valid file or directory."
+        return 1
+    fi
+}
+

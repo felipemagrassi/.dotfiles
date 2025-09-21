@@ -31,3 +31,6 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 eval "$(starship init zsh)"
+
+. "$HOME/.local/bin/env"
+

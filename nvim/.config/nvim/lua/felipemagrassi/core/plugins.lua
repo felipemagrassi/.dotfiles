@@ -80,7 +80,7 @@ keymap.set("n", "<leader>e", vim.cmd.Oil)
 
 -- Blink.cmp
 require("blink.cmp").setup({
-	fuzzy = { implementation = "prefer_rust_with_warning" },
+	fuzzy = { implementation = "lua" },
 	signature = { enabled = true },
 	keymap = {
 		preset = "default",
@@ -117,8 +117,6 @@ require("blink.cmp").setup({
 			["<CR>"] = { "accept_and_enter", "fallback" },
 		},
 	},
-
-	sources = { default = { "lsp" } },
 })
 -- Conform
 require("conform").setup({

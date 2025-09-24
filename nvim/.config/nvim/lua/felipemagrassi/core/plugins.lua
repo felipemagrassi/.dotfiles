@@ -1,6 +1,9 @@
 local keymap = vim.keymap
 vim.pack.add({
+	{ src = "https://github.com/nyoom-engineering/oxocarbon.nvim" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/catppuccin/nvim" },
+	{ src = "https://github.com/projekt0n/github-nvim-theme" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/echasnovski/mini.icons" },
@@ -161,4 +164,12 @@ end, { desc = "Format file or range (in visual mode)" })
 require("techbase").setup({
 	transparent = true,
 })
-vim.cmd([[colorscheme techbase]])
+
+require("catppuccin").setup({
+	flavour = "mocha",
+	transparent_background = true,
+})
+
+-- vim.opt.background = "light"
+vim.cmd([[colorscheme oxocarbon]])
+--vim.cmd([[colorscheme github_light]])

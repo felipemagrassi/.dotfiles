@@ -32,3 +32,4 @@ export FZF_DEFAULT_OPTS=" \
 # PATH
 
 export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:/opt/nvim/"
